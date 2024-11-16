@@ -2,6 +2,7 @@ import fs from "fs"
 import path from "path"
 
 export default () => {
+        console.log("I AM RUNNING");
         const imageFolder = "./src/assets/images/japanImages";
         return fs
 .readdirSync(imageFolder)
