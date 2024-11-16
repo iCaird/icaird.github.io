@@ -21,6 +21,10 @@ jobs:
       uses: actions/setup-node@v4
       with:
         node-version: '18'  # or your preferred Node.js version
+    - name: Check if images folder exists
+      run: |
+        ls -la ./src/assets/images
+        ls -la ./src/assets/images/japanImages || echo "Directory not found!"
     - name: Install Tree
       run: sudo apt-get install tree
 
