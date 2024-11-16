@@ -34,6 +34,11 @@ jobs:
       run: |
        ls -laR > file-structure.txt
        echo "File structure saved to file-structure.txt"     
+    - name: Upload file structure artifact
+      uses: actions/upload-artifact@v3
+      with:
+        name: file-structure
+        path: file-structure.txt
     - name: Generate Data to sort images
       run: node ./src/_data/images.js
     # Build the Eleventy site
