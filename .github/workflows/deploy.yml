@@ -26,7 +26,8 @@ jobs:
     - name: Install dependencies
       run: |
         npm install
-
+    - name: Generate Data to sort images
+      run: node ./src/_data/images.js
     # Build the Eleventy site
     - name: Build Eleventy site
       run: |
