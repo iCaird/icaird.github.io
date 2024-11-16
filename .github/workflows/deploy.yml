@@ -21,7 +21,11 @@ jobs:
       uses: actions/setup-node@v4
       with:
         node-version: '18'  # or your preferred Node.js version
+    - name: Install Tree
+      run: sudo apt-get install tree
 
+    - name: View Tree
+      run: tree -a
     # Install dependencies
     - name: Install dependencies
       run: |
