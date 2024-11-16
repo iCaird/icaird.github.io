@@ -30,6 +30,10 @@ jobs:
     - name: Install dependencies
       run: |
         npm install
+    - name: Save file structure
+      run: |
+    ls -laR > file-structure.txt
+    echo "File structure saved to file-structure.txt"     
     - name: Generate Data to sort images
       run: node ./src/_data/images.js
     # Build the Eleventy site
