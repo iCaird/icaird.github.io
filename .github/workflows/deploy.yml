@@ -35,7 +35,7 @@ jobs:
        ls -laR > file-structure.txt
        echo "File structure saved to file-structure.txt"     
     - name: Upload file structure artifact
-      uses: actions/upload-artifact@v3
+      uses: actions/upload-artifact@v4
       with:
         name: file-structure
         path: file-structure.txt
