@@ -13,7 +13,7 @@ export default () => {
         return { file, time : stats.mtime}
                 })
 .sort((a,b) => a.time - b.time)
-.map(({file}) => `/assets/images/japanImages/${file}`);
+.map(({file}) => `./src/assets/images/japanImages/${file}`);
 };
 
 
