@@ -21,7 +21,7 @@ filterTags:
     and the experience of being in Japan for the first time. Posts I make should
     populate a list below. <s>I'll try add a filter at some point to the list so 
     you can choose between posts about maths and posts about Okinawa if you so
-    desire. </s> </p><p> Okay I've implemented a rudimentary whitelist in that if a post has atleast one of the selected tags then it will appear. I spent way too long doing it so please use it once.</p>
+    desire. </s> </p><p> Okay I've implemented a rudimentary whitelist in that if a post has atleast one of the selected tags then it will appear. I spent way too long doing it so please use it at least once.</p>
 <div id="japan-tag-filters">
         {% for tag in filterTags %}
                 <label class="japan-filter-label">
@@ -42,7 +42,7 @@ filterTags:
     <p class="taglist"> 
     	{% for tag in post.data.tags %}
 		    {% if tag != "posts" and tag != "japan" %}
-			    ~{{ tag }}~ 
+                    <a href="/tags/{{tag}}">~{{ tag }}~</a> 
 		    {% endif %}
 	    {% endfor %}
     </p>
