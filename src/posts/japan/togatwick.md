@@ -29,7 +29,7 @@ Even Liam and his near Olympic levels of speed walking was not up for that. We f
 so we head back. Liam has stopped turning round to check if I'm still there at this point. That ramp that didn't look friendly to pedestrians? That'd probably be something to do with the "No pedestrians on the ramp" signs on either end of it. We go up the ramp. Now as fugitives, we take what I consider to be one of the greatest modes of transport known to man.
 
 <video style="height: 40%" controls>
-<source src="/assets/images/japanImages/liamTravelator.mp4" type="video/mp4">
+<source src="/assets/images/japanImages/output.mp4" type="video/mp4">
 </video>
 
 Just prior to that travelator was a sign for the North Terminal, which is where we were trying to get to and where we now foolishly thought we were after travelating. We're trying to get out of this new building we're in. We're not even sure if we should be
