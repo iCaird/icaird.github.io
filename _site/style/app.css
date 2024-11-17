@@ -168,3 +168,15 @@ img {
         margin: 10px;
         border: 2px solid #D5CEA3;
 }
+
+video {
+        width: 80%;
+        border-radius: 25px;
+        margin: 10px;
+        border: 2px solid #D5CEA3;
+}
+
+.content p {
+        font-size:30;
+}
+
