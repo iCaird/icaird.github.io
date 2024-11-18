@@ -3,35 +3,39 @@ title: Japan
 layout: main
 
 filterTags:
-    - maths
-    - food
-    - culture
-    - travel
+        - maths
+    
 ---
 
 <h2> Japan School & Conference Blog</h2>
 
 <p> From the 18th-30th November I will be at the OIST in Okinawa, Japan for the 
     school and conference:  </p>
-    <h3 style="text-align:center; margin: 0"><a href="https://sites.google.com/view/autumn-oist-school-conference/home"
+    <h3 style="text-align:center; margin: 0; max-width: 80%"><a href="https://sites.google.com/view/autumn-oist-school-conference/home"
     >New developments in representation theory of algebras: <br>
         Algebraic, combinatorial and geometric aspects</a></h3>
 
 <p> I'll be attempting to blog the trip, talking about both the maths I learn
     and the experience of being in Japan for the first time. Posts I make should
-    populate a list below. <s>I'll try add a filter at some point to the list so 
-    you can choose between posts about maths and posts about Okinawa if you so
-    desire. </s> </p><p> Okay I've implemented a rudimentary whitelist in that if a post has atleast one of the selected tags then it will appear. I spent way too long doing it so please use it at least once.</p>
+    populate a list below.
+
+<!-- DISPLAY WHITELIST FILTERS -->
 <div id="japan-tag-filters">
         {% for tag in filterTags %}
                 <label class="japan-filter-label">
-                        <input type="checkbox" class="japan-filter-checkboxes" value="{{ tag }}" checked=true>
-                        {{ tag }} 
+                        <input type="checkbox" class="japan-filter-checkboxes" value="{{ tag }}" >
+                        {% if tag == "maths" %}
+                                MATHS KILL SWITCH
+                        {% else %}
+                                {{ tag }}
+                        {% endif %}
                 </label>
 	{% endfor %}
 
 
 </div>
+
+<!-- DISPLAY POSTS IN CHRONOLOGICAL ORDER -->
 {%  assign posts = collections.japan | reverse %}
 {% for post in posts %}
         <div class="japan-post-container" data-tags={{ post.data.tags | join: "," }}>
@@ -51,6 +55,23 @@ filterTags:
         </div>
 {% endfor %}
 
+<h2> Changelog: </h2>
+
+<ul> 
+    <li>Okay I've implemented a rudimentary whitelist in that if a post has atleast one of the selected tags then it will appear. I spent way too long doing it so please use it at least once.
+    <li> Rather than have a bunch of separate small posts about the food I ate each day I've
+            instead created a 'megathread' (megapost?) that I will periodically update.
+            <li> Not that it really matters, but times and dates are all going to be in whatever my local timezone is (which for nearly all posts is going to be GMT+9 for Okinawa)
+</ul>
+
+<h2> Todo: </h2>
+
+<ul>
+        <li> Rework tagging system and filters
+                <li> Make CSS pretty and consistent and manageable
+        <li> Liam has never hated anything more than this colour scheme so I'm gonna change it
+</ul>
+
 <script>
         const tagFilters = document.querySelectorAll(".japan-filter-checkboxes");
         const posts = document.querySelectorAll(".japan-post-container");
@@ -67,7 +88,7 @@ filterTags:
                                 const matches = activeTags.some(tag => postTags.includes(tag));
                                 console.log(postTags);
                                 console.log(matches);
-                                post.style.display = matches ? "" : "none";
+                                post.style.display = matches ? "none" : "";
                 });
                 });
         });
