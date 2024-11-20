@@ -20,3 +20,5 @@ pass at the bit where you put your stuff into trays. I only realised when one of
 to just be them wanting to see my inhaler since its a liquid and I hadn't put it in a plastic bag. Spoons breakfast awaited me on the other side of the copious amounts of duty-free fragrances and sunglasses. 
 
 ![](/assets/images/japanImages/20241117_083927.jpg)
+
+
