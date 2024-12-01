@@ -1,0 +1,16 @@
+---
+title: Photo Gallery
+layout: main
+---
+
+<h1>Photo Gallery</h1>
+
+<div class="gallery">
+  {% for image in gallery %}
+<a href="/assets/images/japanImages/{{ image }}" target="_blank">
+    <img src="/assets/images/japanImages/{{ image }}" alt="">
+</a>
+  {% endfor %}
+</div>
+
+
