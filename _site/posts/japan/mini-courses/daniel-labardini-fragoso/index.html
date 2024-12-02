@@ -1,0 +1,100 @@
+<html lang="en">
+<head>
+<title>Tame algebras arising from surfaces - Daniel Labardini-Fragoso</title>
+<link rel="icon" type="image/x-icon" href="/assets/images/favicons/favicon-32x32.png">
+<link rel="stylesheet" href="/style/app.css">
+<script defer src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+<link rel="stylesheet" type="text/css" href="http://tikzjax.com/v1/fonts.css">
+<script src="https://tikzjax.com/v1/tikzjax.js"></script>
+<script type="text/javascript" src="/mathjax-init.js"></script>
+
+
+</script>
+</head>
+<body>
+    <div class="header">
+        ~
+        
+        
+            <a class="navLink " href="/"> Home</a> ~
+        
+            <a class="navLink " href="/blog/"> Blog</a> ~
+        
+            <a class="navLink " href="/japan/"> Japan</a> ~
+        
+            <a class="navLink " href="/archives/"> Archive</a> ~
+        
+            <a class="navLink " href="/sketchesPage/"> Sketches</a> ~
+        
+            <a class="navLink " href="/research/"> Research</a> ~
+        
+            <a class="navLink " href="/teaching/"> Teaching</a> ~
+        
+            <a class="navLink " href="/tagsMain/"> Tags</a> ~
+        
+        </div>
+        <div class="sidebarLeft"></div>
+        <div class="content" >
+        
+<h1>Tame algebras arising from surfaces - Daniel Labardini-Fragoso</h1>
+<p>Ellis Caird </p>
+<p>Created: 02-12-24</p>  
+<p>Lecture 1 overview:</p>
+<ul>
+<li>Some precise definitions of what it means for a f.d. algebra over a field to be finite, tame or wild type.
+Followed by the theorem of Drozd that says this is a trichotomy. Some examples.</li>
+<li>Definition of a <em>gentle</em> algebra (of the form kQ/I). It is almost entirely combinatorial as given and I should look
+up what the motivation behind the definition was (and also what is so 'gentle' about them). Also defined skew-gentle
+algebras which seem even weirder.</li>
+<li>Examples include cyclically ordered $\tilde{A_2}$ with a zero relation at every vertex.</li>
+<li>Gentle and skew-gentle algebras are tame. Indecomposable modules can be fully described in terms of strings and bands [BB,CB]</li>
+<li>Jacobian algebras are defined as quotients of the path algebra of a quiver by all cyclic derivatives of a chosen potential.</li>
+<li>There is a notion of mutation due to Derksen-Weyman-Zelevinsky for quivers with potential.</li>
+<li>DWZ mutation preserves the mutation type between the two resulting Jacobian algebras. Some technicality requires
+us to really work with the 'complete Jacobian algebra'.[DWZ,G-LF-S]</li>
+</ul>
+<p>Lecture 2 overview:</p>
+<ul>
+<li>Defined triangulations of surfaces with marked points and associated a quiver with potential to each such triangulation.</li>
+<li>Flipping arcs to go between triangulations corresponds to DWZ mutation of the corresponding quivers with potental. The catch here is that not every arc in every triangulation can be flipped (the bothersome case being the radius in a self folded triangle).</li>
+<li>We can always flip our way out of such triangulations to &quot;nice&quot; ones which always exist but this is undesirable if you want to emulate cluster behaviour so tagged arcs &amp; triangulations will be the combinatorial tool to plug the gap we will see later.</li>
+<li>Jacobian algebras arising from triangultions where marked points are only on the boundary are gentle and hence tame [ABCP '09].</li>
+<li>[GLFS] If the boundary of the surface is non-empty and it is not a punctured monogon, then the jacobian algebra is skew-gentle and hence tame.</li>
+<li>Some theorem by both Geiss and also Crawley-Boevey about the tameness of some algebras defined by quotient of algebras by images of morphisms of varieties.</li>
+<li>For a surface with boundary, AR-translation of modules can be modelled by &quot;tag switching partial Dehn twists&quot;.</li>
+<li>$\tau$-rigidity and $\tau$-tilting pairs are preserved under DWZ mutation (this mutation takes modules of a Jacobian algebra to modules of the mutated algebra).</li>
+<li>If two $\tau$-tilting pairs are related by an AIR mutation, then so are the corresponding DWZ mutated modules as modules over the mutated Jacobian algebra.</li>
+<li>Get some nice bijections:
+<ul>
+<li>indecomposable $\tau$-rigid pairs &lt;-&gt; tagged arcs on the corresponding surface</li>
+<li>$\tau$-tilting pairs &lt;-&gt; tagged triangulations</li>
+</ul>
+</li>
+<li>And a correspondence between AIR mutation and flips of tagged triangulations.</li>
+</ul>
+<p>Lecture 3 overview:</p>
+<ul>
+<li>Some recap of stuff from Charles' course about $\tau$-reduced components of the representation variety and some characterisations.</li>
+<li>Introduced decorated representations as a pair consisting of a module and a sum of indec projectives corresponding to a choice of $\underline{v} \in \mathbb{Z}_{\geq 0}^{Q_0}$</li>
+</ul>
+
+
+
+        </div>
+        <div class="sidebarRight"></div>
+        </body>
+
+
+        <script type="text/javascript">
+    function adjustDivHeight(){
+        console.log(`ADJUSTING HEIGHT TO: ${document.documentElement.scrollHeight}`);
+        const div = document.querySelector(".sidebarLeft");
+        const div2 = document.querySelector(".sidebarRight");
+
+        div.style.height = document.documentElement.scrollHeight + "px";
+        div2.style.height = document.documentElement.scrollHeight + "px";
+    }
+    adjustDivHeight();
+    window.addEventListener('scroll', adjustDivHeight);
+</script>
+        </html>
