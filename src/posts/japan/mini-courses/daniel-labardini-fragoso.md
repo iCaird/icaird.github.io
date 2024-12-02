@@ -43,4 +43,4 @@ Lecture 2 overview:
 Lecture 3 overview:
 
 - Some recap of stuff from Charles' course about $\tau$-reduced components of the representation variety and some characterisations.
-- Introduced decorated representations as a pair consisting of a module and a sum of indec projectives corresponding to a choice of $\underline{v} \in \mathbb{Z}_{\geq 0}^{Q_0}$
+- Introduced decorated representations as a pair consisting of a module and a sum of indec projectives corresponding to a choice of $\underline{v} \in \mathbb{Z}_{\geq 0}^{Q_0}$. Notion of projective g-vectors.
