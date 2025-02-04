@@ -213,3 +213,15 @@ h1 {
   padding: 0;
 }
 
+
+div.sketch-card {
+  border: 2px dashed coral;
+  background-color: grey;
+  padding: 15px;
+}
+
+div.sketches-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px,1fr)); 
+  grid-gap: 1rem;
+}
