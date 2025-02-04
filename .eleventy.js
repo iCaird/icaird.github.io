@@ -14,7 +14,7 @@ export default (config) => {
     config.addPassthroughCopy("src/sketches");
     config.addPassthroughCopy("src/mathjax-init.js");
     config.addPassthroughCopy("src/assets");
-    config.addPassthroughCopy("src/immannant-matching-refactor")
+    config.addPassthroughCopy("src/immanant-matching-refactor")
 
     const markdownLibrary = markdownIt({ html: true }).use(markdownItAnchor, {
         permalink: false,
