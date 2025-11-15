@@ -30,7 +30,7 @@ function draw() {
     fill(0);
     circle(node.x, -line_pad, 5)
     text(`${node.val[0]}/${node.val[1]}`, node.x, node.y)
-    node.y += node.y > 0 ? 0.5 : -0.5;
+    node.y += node.y > 0 ? 1 : -1;
   }
 
 
