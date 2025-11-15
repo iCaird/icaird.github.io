@@ -9,6 +9,8 @@ import PostNavigation from "@components/PostNavigation.astro";
 import TableOfContents from "@components/TableOfContents.astro";
 import Giscus from "@components/Giscus.astro";
 import ProgressBar from "@components/ProgressBar.astro"
+import P5Sketch from "@components/P5Sketch.astro";
+
 export async function getStaticPaths() {
   const posts = (await getCollection("blog"))
     .filter((post) => !post.data.draft)

@@ -3,7 +3,9 @@ title: "The Calkin-Wilf Tree"
 description: "An interesting enumeration of the rationals"
 date: "2025-11-15"
 draft: false
+
 ---
+
 
 ---
 ## Rational Thoughts
@@ -24,26 +26,16 @@ $$L\left(\frac{a}{b}\right) = \frac{a}{a+b},\quad R\left(\frac{a}{b}\right) = \f
 
 </center>
 
-<center><div id="sketch-container"></div></center>
-
-<script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.7.0/p5.min.js"></script>
-
-<script>
-  function sketch(p) {
-    p.setup = function() {
-      let container = document.getElementById('sketch-container');
-      p.createCanvas(400, 400);
-    };
-
-    p.draw = function() {
-      p.background(220);
-      p.fill(0);
-      p.circle(p.mouseX, p.mouseY, 50);
-    };
-  }
-
-  new p5(sketch, 'sketch-container');
-</script>
+<div class="flex justify-center mb-16">
+<iframe
+id = "p5-sketch-frame"
+src = "/sketch-viewer.html"
+width="400"
+height="400"
+style="border: none; overflow: hidden;"
+loading="lazy">
+</iframe>
+</div>
 
 ---
 [^1]: I'm currently trying to understand the structure of the module category of a

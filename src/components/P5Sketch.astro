@@ -1,0 +1,16 @@
+---
+// src/components/P5Sketch.astro
+interface Props {
+  sketchPath: string;
+  width?: string;
+  height?: string;
+}
+
+const { sketchPath, width = '800px', height = '400px' } = Astro.props;
+---
+
+<iframe 
+  src={`/sketch-viewer.html?sketch=${encodeURIComponent(sketchPath)}`}
+  style={`width: ${width}; height: ${height}; border: none;`}
+  title="p5 sketch"
+></iframe>
