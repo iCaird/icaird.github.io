@@ -1,9 +1,24 @@
 let nodes = [];
 let line_pad = 0
 let circles = [];
+let leftButton;
+let rightButton;
+let resetButton;
 function setup() {
   createCanvas(400, 400);
   background(220);
+  leftButton = createButton('L');
+  rightButton = createButton('R');
+  leftButton.position(10, height + -20);
+  rightButton.position(50, height + -20);
+  leftButton.mousePressed(() => left());
+  rightButton.mousePressed(() => right());
+  resetButton = createButton('Reset');
+  resetButton.position(90, height + -20);
+  resetButton.mousePressed(() => {
+    nodes = [nodes[0]];
+    circles = [];
+  });
   nodes.push({
     x: width / 2,
     val: [1, 1],
@@ -36,15 +51,11 @@ function draw() {
 
 }
 
-
-function keyPressed() {
-  console.log(circles);
+function left() {
   let lastnode = nodes.at(-1);
   let lastnum = lastnode.val[0];
   let lastden = lastnode.val[1];
-  if (keyCode === LEFT_ARROW) {
-
-    nodes.push({
+ nodes.push({
       x: map(lastnum / (lastnum + lastden), 0, 1, line_pad, width / 2),
       val: [lastnum, 2 * lastnum + lastden],
       y : 10
@@ -61,10 +72,13 @@ function keyPressed() {
     })
     for (let c of circles) {
       c.a -= 10;
-    }
-    console.log(circles[0].a);
-  } else if (keyCode === RIGHT_ARROW) {
-    nodes.push({
+    } 
+}
+function right() {
+  let lastnode = nodes.at(-1);
+  let lastnum = lastnode.val[0];
+  let lastden = lastnode.val[1];
+  nodes.push({
       x: map(log((lastnum + lastden) / lastden), log(1), log(20), width / 2, width - line_pad),
       val: [lastnum + lastden, lastden],
       y : -10
@@ -81,6 +95,16 @@ function keyPressed() {
     for (let c of circles) {
       c.a -= 10;
     }
+}
+function keyPressed() {
+  let lastnode = nodes.at(-1);
+  let lastnum = lastnode.val[0];
+  let lastden = lastnode.val[1];
+  if (keyCode === LEFT_ARROW) {
+left();
+    
+  } else if (keyCode === RIGHT_ARROW) {
+    right();
 
   } else if (key === 'r') {
     nodes = [nodes[0]];
