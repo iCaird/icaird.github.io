@@ -5,14 +5,50 @@ let leftButton;
 let rightButton;
 let resetButton;
 let started = false;
-let TEXT_SIZE = 16;
+let TEXT_SIZE = 32;
+let bgc;
+
+function getParentBg() {
+  if (parent && parent !== window) {
+    return getComputedStyle(parent.document.body).backgroundColor || null;
+  }
+/*   try {
+    const parentDoc = (parent && parent !== window) ? parent.document : document;
+    return getComputedStyle(parentDoc.body).backgroundColor || null;
+  } catch (e) {
+    return null;
+  } */
+}
+
+let _bgDebounce = null;
+function scheduleBgUpdate() {
+    const newBg = getParentBg();
+    if (newBg !== bgc) {
+      bgc = newBg;
+      // ensure immediate repaint in case draw isn't running yet
+      try { background(bgc); } catch (e) {}
+    }
+}
+try {
+  if (parent && parent !== window && parent.MutationObserver) {
+    let lastIsDark = !!parent.document.documentElement.classList.contains('dark');
+    const mo = new parent.MutationObserver(() => {
+      let nowIsDark = !!parent.document.documentElement.classList.contains('dark');
+      if (nowIsDark !== lastIsDark) {
+        lastIsDark = nowIsDark;
+        scheduleBgUpdate();
+      }
+    });
+    mo.observe(parent.document.documentElement, { attributes: true, attributeFilter: ['class'] });
+  }
+} catch (e) {
+  // cross-origin or other errors — fallback: do nothing
+}
 function setup() {
+  bgc = getParentBg() || '#0f172a';
+  console.log(bgc);
   pixelDensity(window.devicePixelRatio);
   createCanvas(window.innerWidth,window.innerHeight);
-  background(220);
-  tex = createP();
-  tex.style("'font-size', '14px'");
-  tex.position(0,0);
   leftButton = createButton('L');
   rightButton = createButton('R');
   leftButton.position(10, height + -25);
@@ -46,7 +82,8 @@ function setup() {
 
 
 function draw() {
-  background(15, 23, 42);
+  console.log(bgc);
+  background(bgc);
   translate(0, height/2);
   textAlign(CENTER, CENTER)
   stroke(120)
@@ -57,7 +94,7 @@ function draw() {
     push()
     noFill();
     colorMode(HSB)
-    stroke(map(c.a,255,0,0,360), 255, 100, c.a);
+    stroke(map(c.a,255,0,0,360), 100, 80, c.a);
     strokeWeight(map(c.a, 0, 255, 2, 6))
     // circle(c.x,-line_pad,c.d);
     arc(c.x, -line_pad, c.d, c.d, c.dir == -1 ? PI : 0, c.dir == -1 ? 0 : PI);
@@ -67,7 +104,7 @@ function draw() {
     if (node.a <= 5) nodes.splice(nodes.indexOf(node), 1);
     push()
     colorMode(HSB);
-    fill(map(node.a,255,0,0,360),100,255,node.a);
+    fill(map(node.a,255,0,0,360),100,80,node.a);
     strokeWeight(0.1);
     noStroke();
     //circle(node.x, -line_pad, 5);
@@ -86,9 +123,10 @@ function draw() {
     noStroke();
   for (let node of nodes) {
     let colr = map(node.a,255,0,0,360);
-    fill(colr,100,255,node.a);
+    fill(colr,100,80,node.a);
     // text(`${node.val[0]}/${node.val[1]}`, node.x, node.y);
-    drawFraction(node.val[0], node.val[1], node.x, node.y + 10,colr);
+    let yoff = node.y > 0 ? 24 : -24;
+    drawFraction(node.val[0], node.val[1], node.x, node.y + yoff,colr);
   }
   pop();
 
@@ -96,15 +134,16 @@ function draw() {
 }
 
 function drawFraction(num, den, x, y, c) {
-  text(num, x, y - 10);
+  text(num, x, y - 16);
+  
   push();
   let numWidth = textWidth(num);
   let denWidth = textWidth(den);
   let maxWidth = max(numWidth, denWidth);
-  stroke(c,100,255);
+  stroke(c,100,80);
   line(x - maxWidth / 2, y, x + maxWidth / 2, y);
   pop();
-  text(den, x, y + 10);
+  text(den, x, y + 16);
 }
 function left() {
   let lastnode = nodes.at(-1);

@@ -83,6 +83,39 @@ pre {
   @apply border border-black/15 py-5 dark:border-white/20;
 }
 
+#fun-link{
+   position: relative;
+   color: inherit;
+   transition: color 200ms ease;
+}
+
+#fun-link:hover, #fun-link:focus {
+  color: transparent;
+  -webkit-text-fill-color: transparent;
+
+  background-image: linear-gradient(
+    90deg,
+    hsl(0 100% 50%),
+    hsl(60 100% 50%),
+    hsl(120 100% 50%),
+    hsl(180 100% 50%),
+    hsl(240 100% 50%),
+    hsl(300 100% 50%),
+    hsl(360 100% 50%) /* same as hsl(0) to close the loop smoothly */
+  );
+  -webkit-background-clip: text;
+  background-clip: text;
+  background-size: 400% 100%;
+  animation: funlink-rainbow 0.8s linear infinite;
+}
+
+@keyframes funlink-rainbow {
+ from { background-position: 0% 0; }
+  to   { background-position: -100% 0; }
+
+}
+
+
 :root {
   --astro-code-color-text: #09090b;
   --astro-code-color-background: #fafafa;

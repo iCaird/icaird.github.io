@@ -18,6 +18,37 @@
 </head>
 <body style="margin: 0; padding:0; overflow: hidden;">
   <script src="/sketches/calkin-wilf.js"></script>
+  <script>
+/*     function applyBgColor() {
+        const canvas = document.querySelector('canvas');
+        if (!canvas) return;
+        let bg;
+        try {
+            bg = parent && parent !== window
+                ? getComputedStyle(parent.document.body).backgroundColor
+                : 'red';
+        } catch {
+            bg = 'red';
+        }
+        bgc = color(bg);
+        canvas.style.backgroundColor = bg;
+        try { if (typeof background === 'function') background(bg); } catch (e) {}
+ 
+    } */
+
+/*     window.addEventListener('DOMContentLoaded', () => {
+      applyBgColor();
+      // If same-origin, observe parent html.class changes (theme toggles) and reapply
+      try {
+        if (parent && parent !== window && parent.MutationObserver) {
+          const mo = new parent.MutationObserver(applyBgColor);
+          mo.observe(parent.document.documentElement, { attributes: true, attributeFilter: ['class'] });
+        }
+      } catch (e) {
+        // ignore cross-origin or other errors
+      }
+    });; */
+  </script>
 
 </body>
 </html>
