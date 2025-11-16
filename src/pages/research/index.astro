@@ -1,0 +1,74 @@
+---
+import { getCollection } from "astro:content";
+import Layout from "@layouts/Layout.astro";
+import Container from "@components/Container.astro";
+import { RESEARCH } from "@consts";
+import PublicationCard from "@components/PublicationCard.astro";
+import Link from "@components/Link.astro";
+// import PublicationCard from "@components/PublicationCard";
+
+const publications = (await getCollection("publications"))
+  .sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf());
+---
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/katex.min.css" />
+
+<Layout title={RESEARCH.TITLE} description={RESEARCH.DESCRIPTION}>
+  <Container>
+    <aside data-pagefind-ignore>
+      <div class="space-y-5">
+        <div class=" text-4xl animate font-semibold text-black dark:text-white">
+          Research
+        </div>
+        <p class="animate">This is where I'll say things about my research. Here
+          is a rough idea of the kinds of things I work on/ am interested in:
+        </p>
+        <ul class="animate list-disc pl-6">
+          <li>Cluster algebras</li>
+          <li>Grassmannians</li>
+          <li>Representation theory (of associative algebras)</li>
+          <li>Categorification</li>
+          <li>Combinatorics - webs & dimers</li>
+        </ul>
+
+        <p>Most recently, I am working towards classifying rigid indecomposable
+        modules in additive categorifications of the cluster structure on the coordinate rings
+      of Grassmannians. These are module categories introduced by
+       <Link href="https://arxiv.org/abs/1309.7301" class="">Jensen, King, & Su</Link>
+       that provide 'categorical lifts' of cluster variables, clusters, and mutation
+       for Grassmannians.
+       Cluster variables are in correspondence with rigid indecomposable modules. 
+       <br>
+       The Grassmannians Gr(3,9) and Gr(4,8) are the only two (up to
+      symmetry) of 'tame' or 'finite mutation' type, i.e. there are infinitely many cluster variables,
+      but only finitely many quivers in its quiver mutation class. On the categorical side,
+    this means that although there are infinitely many rigid indecomposable modules, 
+    they generally fall into understandable 1-parameter families. 
+    </p>
+<!--         <ul class="animate not-prose flex flex-col gap-4">
+          {
+            publications.map((publication) => (
+              <li>
+                <PublicationCard entry={publication} />
+              </li>
+            ))
+          }
+        </ul> -->
+      </div>
+    </aside>
+  </Container>
+</Layout>
+
+<script type="module" client:load>
+  import renderMathInElement from 'https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/contrib/auto-render.mjs';
+  renderMathInElement(document.body, {
+    // customised options
+    // • auto-render specific options
+    delimiters: [
+      {left: '$$', right: '$$', display: true},
+      {left: '\\[', right: '\\]', display: true},
+      {left: '$', right: '$', display: false},
+      {left: '\\(', right: '\\)', display: false}
+    ],
+    // • general options
+    throwOnError : false
+  });
