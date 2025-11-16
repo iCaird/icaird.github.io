@@ -5,8 +5,6 @@ let leftButton;
 let rightButton;
 let resetButton;
 let started = false;
-let one;
-let tex;
 let TEXT_SIZE = 16;
 function setup() {
   pixelDensity(1);
@@ -15,7 +13,6 @@ function setup() {
   tex = createP();
   tex.style("'font-size', '14px'");
   tex.position(0,0);
-  katex.render('\\nabla^2{2}\\Phi=\\sigma(x)', tex.elt);
   leftButton = createButton('L');
   rightButton = createButton('R');
   leftButton.position(10, height + -25);
