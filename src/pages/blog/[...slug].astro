@@ -47,7 +47,7 @@ const prevPost = getPrevPost(currentPostSlug);
 const post = Astro.props;
 const { Content, headings } = await post.render();
 ---
-<ProgressBar />
+<!-- <ProgressBar /> -->
 <Layout title={post.data.title} description={post.data.description}>
   <Container>
     <div class="animate">
