@@ -58,10 +58,7 @@ const { title, description, image = "/blog-placeholder-1.jpg" } = Astro.props;
   function init() {
     preloadTheme();
     onScroll();
-    animate();
-    updateThemeButtons();
-    addCopyCodeButtons();
-    setGiscusTheme();
+
 
     const backToTop = document.getElementById("back-to-top");
     backToTop?.addEventListener("click", (event) => scrollToTop(event));
@@ -99,6 +96,20 @@ const { title, description, image = "/blog-placeholder-1.jpg" } = Astro.props;
       });
 
     document.addEventListener("scroll", onScroll);
+
+    const runNonCritial = () => {
+      requestAnimationFrame(() => {
+        animate();
+        addCopyCodeButtons();
+        updateThemeButtons();
+      });
+    }
+
+    if ("requestIdleCallback" in window) {
+      (window).requestIdleCallback(runNonCritial, { timeout: 200 });
+    } else {
+      setTimeout(runNonCritial, 0);
+    }
   }
 
   function updateThemeButtons() {
@@ -136,7 +147,7 @@ const { title, description, image = "/blog-placeholder-1.jpg" } = Astro.props;
     animateElements.forEach((element, index) => {
       setTimeout(() => {
         element.classList.add("show");
-      }, index * 100);
+      }, index * 80);
     });
   }
 
@@ -187,10 +198,12 @@ const { title, description, image = "/blog-placeholder-1.jpg" } = Astro.props;
   }
 
   function preloadTheme() {
-    const userTheme = localStorage.theme;
+    const userTheme = localStorage.getItem("theme");
 
-    if (userTheme === "light" || userTheme === "dark") {
-      toggleTheme(true); // set default to dark theme
+    if (userTheme === "light") {
+      toggleTheme(false); // set default to light theme
+    } else if (userTheme === "dark") {
+      toggleTheme(true);
     } else {
       toggleTheme(window.matchMedia("(prefers-color-scheme: dark)").matches);
     }
