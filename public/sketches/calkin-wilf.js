@@ -7,7 +7,7 @@ let resetButton;
 let started = false;
 let TEXT_SIZE = 16;
 function setup() {
-  pixelDensity(1);
+  pixelDensity(window.devicePixelRatio);
   createCanvas(window.innerWidth,window.innerHeight);
   background(220);
   tex = createP();
@@ -182,5 +182,13 @@ left();
   }];
     circles = [];
   }
+}
+
+
+function windowResized() {
+  resizeCanvas(window.innerWidth, window.innerHeight);
+  leftButton.position(10, height + -25);
+  rightButton.position(35, height + -25);
+  resetButton.position(62.5, height + -25);
 }
 
