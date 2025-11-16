@@ -5,7 +5,8 @@ let leftButton;
 let rightButton;
 let resetButton;
 function setup() {
-  createCanvas(400, 400);
+  pixelDensity(1);
+  createCanvas(windowWidth,windowHeight);
   background(220);
   leftButton = createButton('L');
   rightButton = createButton('R');
@@ -97,15 +98,10 @@ function right() {
     }
 }
 function keyPressed() {
-  let lastnode = nodes.at(-1);
-  let lastnum = lastnode.val[0];
-  let lastden = lastnode.val[1];
   if (keyCode === LEFT_ARROW) {
 left();
-    
   } else if (keyCode === RIGHT_ARROW) {
     right();
-
   } else if (key === 'r') {
     nodes = [nodes[0]];
     circles = [];
