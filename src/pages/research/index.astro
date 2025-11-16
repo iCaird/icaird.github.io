@@ -10,7 +10,6 @@ import Link from "@components/Link.astro";
 const publications = (await getCollection("publications"))
   .sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf());
 ---
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/katex.min.css" />
 
 <Layout title={RESEARCH.TITLE} description={RESEARCH.DESCRIPTION}>
   <Container>
@@ -58,17 +57,4 @@ const publications = (await getCollection("publications"))
   </Container>
 </Layout>
 
-<script type="module" client:load>
-  import renderMathInElement from 'https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/contrib/auto-render.mjs';
-  renderMathInElement(document.body, {
-    // customised options
-    // • auto-render specific options
-    delimiters: [
-      {left: '$$', right: '$$', display: true},
-      {left: '\\[', right: '\\]', display: true},
-      {left: '$', right: '$', display: false},
-      {left: '\\(', right: '\\)', display: false}
-    ],
-    // • general options
-    throwOnError : false
-  });
+
