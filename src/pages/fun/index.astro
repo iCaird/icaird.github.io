@@ -1,6 +1,7 @@
 ---
 import Layout from '../../layouts/Layout.astro';
 import Container from '../../components/Container.astro';
+import  Link  from '../../components/Link.astro';
 ---
 
 <Layout title="Fun!" description="temp description">
@@ -14,5 +15,8 @@ import Container from '../../components/Container.astro';
     <center>
     <img src="/funny.jpg" width=80%></img>
     </center>
+    <article>
+    <p><Link href="/thoughts">Thoughts</Link></p>
+    </article>
 </Container>
 </Layout>

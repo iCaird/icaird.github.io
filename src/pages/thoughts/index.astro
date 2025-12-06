@@ -1,0 +1,32 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import Container from '../../components/Container.astro';
+import  Link  from '../../components/Link.astro';
+import { type CollectionEntry, getCollection } from "astro:content";
+import ArrowCard from '@components/ArrowCard.astro';
+
+const data = (await getCollection("thoughts"))
+  .filter((post) => !post.data.draft)
+  .sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf());
+  console.log();
+---
+
+<Layout title="Fun!" description="temp description">
+<Container>
+    <h1 class="animate text-4xl font-semibold">Thoughts</h1>
+    <article>
+    <p class="animate">My idea for this page is a collection of random thoughts and things 
+        that I find interesting. Things won't be as formal or structured as blog posts
+        for example. I find myself putting off writing about things because I feel
+        like it needs to take the form of a perfectly thought out article. Hopefully
+        this will help to get words down more often. Or perhaps as with blogs I will invent some
+        non-existent standard for what a "thought" should look like. Only time will tell. 
+        I'm going to generally let this be a mess of ramblings so expect anything from
+        just a title to full verbal vomit.
+    </p>
+    </article>
+    <p>{data}</p>
+    <ul class="animate not-prose flex flex-col gap-4">
+        {data.map(p => <li><ArrowCard entry={p} /></li>)}
+    </ul>
+</Layout>

@@ -105,13 +105,13 @@ pre {
   );
   -webkit-background-clip: text;
   background-clip: text;
-  background-size: 400% 100%;
-  animation: funlink-rainbow 0.8s linear infinite;
+  background-size: 200% 100%;
+  animation: funlink-rainbow 1s linear infinite;
 }
 
 @keyframes funlink-rainbow {
  from { background-position: 0% 0; }
-  to   { background-position: -100% 0; }
+  to   { background-position: -200% 0; }
 
 }
 
@@ -155,4 +155,20 @@ pre {
 
 .copy-code:active {
   @apply scale-90 transition-transform;
+}
+
+
+.wobble {
+  display: inline-block;
+  animation: wobble 0.4s ease-in-out infinite alternate;
+}
+
+@keyframes wobble {
+  0% { transform: rotate(-3deg) translateY(0px);}
+  100% { transform: rotate(3deg) translateY(-2px);}
+}
+
+.raised {
+  position: relative;
+  top: -0.3em;
 }
