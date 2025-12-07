@@ -1,0 +1,168 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+    <title>reveal.js</title>
+
+    <link rel="stylesheet" href="dist/reset.css">
+    <link rel="stylesheet" href="dist/reveal.css">
+    <link rel="stylesheet" href="dist/theme/dracula.css">
+
+    <!-- Theme used for syntax highlighted code -->
+    <link rel="stylesheet" href="plugin/highlight/monokai.css">
+  </head>
+  <body>
+    <div class="reveal">
+      <div class="slides">
+        <section  data-scrollable data-auto-scale data-markdown class="data-auto-fragment">
+          <textarea data-template>
+
+<h1 class="fragment"> I AM COUNTING THINGS</h1>   
+
+<!-- ## Ellis Caird -->
+
+<u class="fragment fade-up" style="display:block;">What am I counting?</u>
+
+<span class = "fragment fade-up" style="display: block;">Rigid indecomposable modules</span>
+
+<u class = "fragment fade-right" style="display:block;">Why am I counting them?</u> 
+
+<span class = "fragment fade-up" style="display:block;"> They correspond to __cluster variables__ </span>
+
+<u class = "fragment fade-right" style="display:block;">How am I counting them?</u> 
+
+<span class="fragment fade-up" style="display: block;"> _Carefully_ </span> 
+
+---
+
+
+<div>
+
+<span class="fragment">The homogeneous coordinate ring $\mathbb{C}[\mathrm{Gr}(k,n)]$ has a **cluster structure**.</span>
+
+
+<span class="fragment">This structure can be categorified by the module category $\mathrm{CM}C$ introduced by Jensen, King, and Su.</span>
+
+<span class="fragment"> Cluster character $\Phi \colon \mathrm{CM}C \to \mathbb{C}[\mathrm{Gr}(k,n)]$</span>
+
+<!-- Rigid indecomposables $\longleftrightarrow$ Cluster variables -->
+<!---->
+<!-- Cluster tilting objects $\longleftrightarrow$ Clusters -->
+<!---->
+<!-- Extensions $\longleftrightarrow$ Exchange relations -->
+
+<table>
+  <tr class="fragment">
+    <td style="font-weight:normal;border:right;">Rigid indecomposables</td>
+    <td style=";">Cluster variables</td>
+  </tr>
+  <tr class="fragment">
+    <td style="font-weight:normal;border:right;">Cluster tilting objects</td>
+    <td style=";">Clusters</td>
+  </tr>
+  <tr class="fragment">
+    <td style="font-weight:normal;border:right;">Extensions</td>
+    <td style=";">Exchange relations</td>
+  </tr>
+</table>
+
+</div>
+
+---
+<div style="display: flex; justify-content: center;">
+<table>
+    <thead>
+    <tr>
+      <th class="fragment fade-right" data-fragment-index="0" style="border-right:1px solid white;">$k,n$</th>
+      <th class=" fragment fade-down" data-fragment-index="1">$1,n$</th>
+      <th class=" fragment fade-down" data-fragment-index="1">$2,n$</th>
+      <th class=" fragment fade-down" data-fragment-index="1">$3,6$</th>
+      <th class=" fragment fade-down" data-fragment-index="1">$3,7$</th>
+      <th class=" fragment fade-down" data-fragment-index="1">$3,8$</th>
+      <th class="fragment fade-down" data-fragment-index="3" style="color:#50FA7B;">$3,9$</th>
+      <th class="fragment fade-down" data-fragment-index="3" style="color:#50FA7B;">$4,8$</th>
+      <th class="fragment fade-down" data-fragment-index="2" style="color:#FF5555;">$4+,9+$</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr>
+      <td class="fragment fade-right" data-fragment-index="0"style="font-weight:bold;">#CV</td>
+      <td class=" fragment fade-down" data-fragment-index="1">$n$</td>
+      <td class=" fragment fade-down" data-fragment-index="1">$\frac{n(n-1)}{2}$</td>
+      <td class=" fragment fade-down" data-fragment-index="1">22</td>
+      <td class=" fragment fade-down" data-fragment-index="1">49</td>
+      <td class=" fragment fade-down" data-fragment-index="1">136</td>
+      <td class="fragment fade-down" data-fragment-index="3" style="color:#50FA7B;">$\infty$</td>
+      <td class="fragment fade-down" data-fragment-index="3" style="color:#50FA7B;">$\infty$</td>
+      <td class="fragment fade-down" data-fragment-index="2" style="color:#FF5555;">$\infty$</td>
+    </tr>
+    </tbody>
+</table>
+</div>
+
+<br>
+<p class="fragment" data-fragment-index="4">::#50FA7B{How many cluster variables of a given degree $r$?}</p>
+<p class="fragment" data-fragment-index="5">::#50FA7B{How many rigid indecomposable modules of a given rank $r$?}</p>
+
+---
+<div style="display: flex; justify-content: center;">
+<div class="fragment fade-right">
+  <p>$\mathrm{CM}C$ module for $3,9$</p>
+  <img height="auto" src="./39-rank-7.png"></img>
+</div>
+<div class="fragment fade-left">
+  <p>Mysterious quiver with relations</p>
+  <img height="auto" src="./subspace-quiver.png"></img>
+</div>
+
+</div>
+</div>
+
+          </textarea>
+        </section>
+      </div>
+    </div>
+
+    <script src="dist/reveal.js"></script>
+    <script src="plugin/notes/notes.js"></script>
+    <script src="plugin/markdown/markdown.js"></script>
+    <script src="plugin/highlight/highlight.js"></script>
+    <script src="plugin/math/math.js"></script>
+    <script>
+const style = document.createElement('style');
+style.textContent = `
+  .reveal table th { border-bottom: 1px solid white !important; }
+`;
+document.head.appendChild(style);
+      Reveal.on('ready', () => {
+  // Auto-fragmentize all paragraphs in sections with class "auto-fragments"
+        document.querySelectorAll('[data-auto-fragment] *, [data-auto-fragment] span').forEach((el) => {
+    if (!el.classList.contains('fragment')) {
+      el.classList.add('fragment fade-up');
+    }
+  });
+});
+document.addEventListener('DOMContentLoaded', function() {
+  document.querySelectorAll('textarea[data-template]').forEach(textarea => {
+    let content = textarea.textContent;
+    
+    // Replace ::color{text} with HTML
+    content = content.replace(/::([\w#]+)\{([^}]+)\}/g, '<span style="color: $1;">$2</span>');
+    
+    textarea.textContent = content;
+  });
+
+
+
+  // Now initialize Reveal
+Reveal.initialize({
+        hash : true,
+  overflow: "auto",
+        plugins: [ RevealMarkdown, RevealHighlight, RevealNotes, RevealMath.KaTeX ]
+      });
+});     
+    </script>
+  </body>
+</html>
