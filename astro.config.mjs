@@ -23,5 +23,6 @@ export default defineConfig({
     rehypePlugins: [rehypeHeadingIds, rehypeAccessibleEmojis, rehypeKatex],
     remarkPlugins: [remarkToc, remarkMath, remarkEmoji, remarkDirective, remarkColorDirectives],
   },
-  server: { port: 1234, host: true}
+  server: { port: 1234, host: true},
+  publicDir: 'public'
 });
