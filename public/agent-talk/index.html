@@ -16,7 +16,7 @@
   <body>
     <div class="reveal">
       <div class="slides">
-        <section  data-scrollable data-auto-scale data-markdown class="data-auto-fragment">
+        <section  data-scrollable data-auto-scale data-markdown data-separator-vertical="^--\n\n" class="data-auto-fragment">
           <textarea data-template>
 
 <h1 class="fragment"> I AM COUNTING THINGS</h1>   
@@ -65,7 +65,7 @@
       <th class=" fragment fade-down" data-fragment-index="1">$3,8$</th>
       <th class="fragment fade-down" data-fragment-index="3" style="color:#50FA7B;">$3,9$</th>
       <th class="fragment fade-down" data-fragment-index="3" style="color:#50FA7B;">$4,8$</th>
-      <th class="fragment fade-down" data-fragment-index="2" style="color:#FF5555;">$4+,9+$</th>
+      <th class="fragment fade-left" data-fragment-index="2" style="color:#FF5555;">$4+,9+$</th>
     </tr>
     </thead>
     <tbody>
@@ -78,15 +78,18 @@
       <td class=" fragment fade-down" data-fragment-index="1">136</td>
       <td class="fragment fade-down" data-fragment-index="3" style="color:#50FA7B;">$\infty$</td>
       <td class="fragment fade-down" data-fragment-index="3" style="color:#50FA7B;">$\infty$</td>
-      <td class="fragment fade-down" data-fragment-index="2" style="color:#FF5555;">$\infty$</td>
+      <td class="fragment fade-left" data-fragment-index="2" style="color:#FF5555;">$\infty$</td>
     </tr>
     </tbody>
 </table>
 </div>
 
 <br>
-<p class="fragment" data-fragment-index="4">::#50FA7B{How many cluster variables of a given degree $r$?}</p>
-<p class="fragment" data-fragment-index="5">::#50FA7B{How many rigid indecomposable modules of a given rank $r$?}</p>
+
+<span style="display:block;color:#50FA7B;" class="fragment fade-down" data-fragment-index="4">How many cluster variables have Pl&uuml;cker degree $r$?</span>
+
+
+<span class="fragment fade-down" data-fragment-index="5" style="color:#50FA7B">How many rigid indecomposable $\mathrm{CM}C$ modules have rank $r$?</span>
 
 ---
 <div style="display: flex; justify-content: center;">
@@ -102,24 +105,24 @@
 </div>
 </div>
 
+
+
 ---
 
-### Tubular algebra of type 2,3,6
+### <span class="fragment fade-down" style="display:block;" data-fragment-index="1">Tubular algebra of type 2,3,6 </span>
+
 
 <div>
-  <img  src="./tubular-ar-quiver.png"></img>
+  <span style="display:block;" class="fragment fade-down" data-fragment-index="1" ><img src="./tubular-ar-quiver.png"></img></span>
   </div>
   <div style="display:flex; justify-content: center; align-items: center;">
-      <img width="15%"  src="./tube.png"></img>
+      <img class="fragment fade-right" width="15%"  src="./tube.png"></img>
       <div style="font-size:35px;display:block;width:50%;">
-       <p>'High enough' in an exceptional tube $\implies$ Rigid </p>
-       <p>Count subspace configurations of ambient degree $r$ that are high enough in their tubes </p>
+       <p class="fragment fade-left">'High enough' in an exceptional tube $\implies$ <span style="color:#FFB86C;">Rigid</span> </p>
+       <p class="fragment fade-left">Count subspace configurations of <span style="color:#FFB86C;">ambient dimension $r$</span> that are high enough in their tubes </p>
       </div>
 
 </div>
-
-
-
 
 
 
@@ -136,17 +139,30 @@ N_2(r) &= \begin{dcases} 0 & r \equiv 0 \mod 3\\\
 \end{align*}
 $$
 
-<span style="color:lightgray;">$\phi_i(x) = \\# \\{ j < x \mid \gcd (x,j) < i \\}$</span>
+<span class="fragment fade-up" style="display:block;color:lightgray;">$\phi_i(x) = \\# \\{ j < x \mid \gcd (x,j) < i \\}$</span>
 
-$N(r) = 3\cdot\left[N_2(r) + N_3(r) + N_6(r)\right]$
+<span class="fragment fade-up" style="display:block;color:#FFB86C;">$\pmb{N(r) = 3\cdot\left[N_2(r) + N_3(r) + N_6(r)\right]}$</span>
 
 ---
+
+### 3,9
 
 <img style="width:80%; height:auto;" src="./39-agent-svg.svg"></img>
 
 ---
 
+### 4,8
 <img style="width:80%; height:auto;" src="./totient-count-48-1-1000000-1.png"></img>
+
+---
+
+<div style="hyphens:auto;word-break:break-word;display:flex; justify-content: center;flex-direction: column; align-items: center; text-align: left;">
+<p style="width:60%;">$\underline{\mathrm{CM}}C \cong \frac{\mathcal{D}^b(\operatorname{coh}\mathbb{X})}{\langle \tau^{-}[1]\rangle} \cong \frac{\mathcal{D}^b(\mathrm{mod}\,P)}{\langle \tau^{-}[1]\rangle}$ where $\mathbb{X}$ is a weighted projective line of weight 2,3,6 or 2,4,4.
+</p>
+
+<p style="width:60%;">Cluster tilting object $T$ in $\underline{\mathrm{CM}}C$ whose (opposite) endomorphism ring
+is isomorphic to the relation extension of $P$.</p>
+</div>
           </textarea>
         </section>
       </div>
@@ -157,6 +173,7 @@ $N(r) = 3\cdot\left[N_2(r) + N_3(r) + N_6(r)\right]$
     <script src="plugin/markdown/markdown.js"></script>
     <script src="plugin/highlight/highlight.js"></script>
     <script src="plugin/math/math.js"></script>
+    <script src="plugin/zoom/zoom.js"></script>
     <script>
 const style = document.createElement('style');
 style.textContent = `
@@ -209,7 +226,7 @@ Reveal.initialize({
   // height: 1080,
   // pdfMaxPagesPerSlide: 1,
   overflow: "auto",
-        plugins: [ RevealMarkdown, RevealHighlight, RevealNotes, RevealMath.KaTeX ]
+        plugins: [ RevealMarkdown, RevealHighlight, RevealNotes, RevealMath.KaTeX, RevealZoom ]
       });
 });     
     </script>
