@@ -25,3 +25,7 @@ pnpm-debug.log*
 
 teaser.pptx
 ~$teaser.pptx
+
+
+
+!public/leeds-talk-slides/slides_files/libs/revealjs/dist/
