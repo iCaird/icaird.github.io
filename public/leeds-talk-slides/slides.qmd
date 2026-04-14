@@ -269,11 +269,12 @@ M_{y_i} = \begin{cases} t & \text{if }i \in I, \\%
 
 ---
 
-### Cluster Character
+### Categorification and Cluster Character {.smaller}
 
 
-:::{style="display: flex; flex-direction:column; gap:2em; justify-content:center"}
-There is a *cluster character* $\Phi \colon \mathrm{CM}C \to \mathbb{C}[\mathrm{Gr}(k,n)]$.
+:::{style="display: flex; flex-direction:column; gap:0.5em; justify-content:center"}
+
+Cluster character $\Phi \colon \text{CM}C \to \mathbb{C}[\mathrm{Gr}(k,n)]$ yielding correspondences:
 
 |$\text{CM}C$|$\mathbb{C}[\mathrm{Gr}(k,n)]$|
 |:-:|:-:|
@@ -282,16 +283,76 @@ There is a *cluster character* $\Phi \colon \mathrm{CM}C \to \mathbb{C}[\mathrm{
 |extensions | exchange relations|
 
 
-Upshot: we can just (try to) count rigid indecomposables. 
+Upshot: we can just (try to) count rigid indecomposable objects. 
 :::
 
 ---
 
+### Higher rank modules 
+
+::: {style="display:flex; flex-direction:column; gap:1em"}
+::: {.callout-note appearance="minimal"}
+## Theorem [JKS]
+Any rigid indecomposable has a unique 'generic filtration' by rank 1 modules.
+:::
+
+Translation: We can visualise such modules by stacking rank 1 modules on top of eachother.
+
+Question: Which stackings actually correspond to filtrations of rigid indecomposables? 
+
+Answer: Hard. But possibly tractable in tame type. Let's look at $\text{Gr}(3,9)$.
+:::
+
+---
+
+
 ### Counting Rigid Indecomposables
+
+- Baur et al conjecture that all 'rigid profiles' are rotates of certain canonical profiles.
+- However, not all of these are.
 
 Baur conjectures, generate higher rank candidates, discover mysterios quiver
 
 {{< placeholder 100 100 format=svg >}}
+
+---
+
+### Generating Candidate Profiles {.scrollable}
+
+:::{.panel-tabset style="background:white;"}
+
+
+
+### R4 {.r-stretch}
+
+:::{style="overflow-y:auto; max-height:80vh; width:100%;"}
+![](39rank4.png){width="100%"}
+:::
+
+### R5 {.r-stretch}
+
+:::{style="overflow-y:auto; max-height:80vh; width:100%;"}
+![](39rank5.png){width="100%"}
+:::
+
+### R15 {.r-stretch}
+
+:::{style="overflow-y:auto; max-height:80vh; width:100%;"}
+![](39rank15.png){width="100%"}
+:::
+
+### R29 {.r-stretch}
+
+:::{style="overflow-y:auto; max-height:80vh; width:100%;"}
+![](39rank29-uncollapsed.png){width="100%"}
+:::
+
+### R29-C {.r-stretch}
+
+:::{style="overflow-y:auto; max-height:80vh; width:100%;"}
+![](39rank29.png){width="100%"}
+:::
+:::
 
 ---
 
@@ -322,6 +383,13 @@ Ringel's Dynkin Euclidean Wild Tubular Wild Hereditary Canonical "T"
 ### Counting Rigid Indecomposables (again)
 
 Slope, degree, rank, ambient dimension problem
+
+---
+
+### Shrinking Functors
+
+---
+
 
 ---
 
