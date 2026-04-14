@@ -1,0 +1,346 @@
+---
+title: "Counting cluster variables in tame Grassmannians"
+author: "Ellis Caird"
+revealjs-plugins:
+  - diagram
+format: 
+  revealjs:
+    filters:
+      - fragment.lua
+      - diagram
+    incremental: true
+    theme: dracula
+    include-in-header:
+      text: |
+        <style>
+        .reveal table td:nth-child(1),
+        .reveal table th:nth-child(1) {
+          border-right: 2px solid white !important;
+        }
+        .reveal table th {
+        border-bottom: 2px solid white !important;
+        }
+        .red { color: #FF5555;}
+        .green { color: #50FA7B;}
+        .fragment-1 { .fragment; .fragment-index}
+        .reveal .highlight-green.visible {
+        color: #50FA7B !important;
+        .reveal .fragment.my-bold {
+        font-weight: normal !important;
+        }
+        .reveal .fragment.my-bold.visible {
+        font-weight: bold !important;
+        }
+        }
+        .reveal tr.my-bold.visible td,
+        .reveal tr.my-bold.visible th {
+        font-weight: bold !important;
+        }
+        .reveal h2,h3 {
+        text-align: center;
+         }
+         .inblock {
+         display: inline-block;
+        }
+
+        </style>
+
+diagram:
+  cache: true
+  engine:
+    tikz:
+      header-includes:
+        - '\usepackage[dvipsnames]{xcolor}'
+        - '\usepackage{amsmath}'
+        - '\usepackage{amssymb}'
+        - '\usetikzlibrary{cd}'
+---
+
+
+### Cluster Structure on Grassmannians
+
+
+- $\mathrm{Gr}(k,n) = \{V \leq \mathbb{C}^n \mid \dim V = k\}$
+- Identify with the space of $(k \times n)$ full rank matrices up to natural $GL_k$ action (change of basis)
+- Projective variety with homogeneous coordinate ring
+$$\mathbb{C}[\mathrm{Gr}(k,n)] = \mathbb{C}[\Delta_{ij}]/\langle\text{Plucker relations}\rangle$$
+
+- Has a *cluster structure*, i.e. overlapping subsets (clusters) whose union generates the algebra 
+  and a rule to move between clusters.
+
+---
+
+### Example: $\mathrm{Gr}(2,5)$
+
+
+::: {style="display:flex; justify-content: center;"}
+```{.tikz}
+%%| width: 100%
+\begin{tikzpicture}
+\tikzset{every node/.style={text=white, scale=0.5}}
+
+\foreach \angle/\label/\pos in {
+  90/1/above,
+  162/5/left,
+  234/4/below left,
+  306/3/below right,
+  18/2/right}{
+  \coordinate (\label) at (\angle:1);
+  \node[white, \pos] at (\angle:1) {$\label$};
+}
+\draw[white] (1) -- (2) -- (3) -- (4) -- (5) -- cycle;
+\draw[Goldenrod] (1) -- node[Goldenrod, midway, above right, inner sep=1pt] {$\Delta_{13}$} (3);
+\draw[white] (1) -- node[midway, above left, inner sep=1pt] {$\Delta_{14}$} (4);
+
+\foreach \start/\end/\label/\pos in {
+1/2/$\Delta_{12}$/above right,
+2/3/$\Delta_{23}$/below right,
+3/4/$\Delta_{34}$/below,
+4/5/$\Delta_{45}$/below left,
+5/1/$\Delta_{15}$/above left}{
+\draw[white] (\start) -- node[midway, \pos] {\label} (\end)
+}
+
+
+\end{tikzpicture}
+\begin{tikzpicture}
+\tikzset{every node/.style={text=white, scale=0.5}}
+
+\foreach \angle/\label/\pos in {
+  90/1/above,
+  162/5/left,
+  234/4/below left,
+  306/3/below right,
+  18/2/right}{
+  \coordinate (\label) at (\angle:1);
+  \node[white, \pos] at (\angle:1) {$\label$};
+}
+\draw[white] (1) -- (2) -- (3) -- (4) -- (5) -- cycle;
+\draw[Goldenrod] (2) -- node[Goldenrod,midway, below right, inner sep=1pt] {$\Delta_{24}$} (4);
+\draw[white] (1) -- node[midway, above left, inner sep=1pt] {$\Delta_{14}$} (4);
+
+\foreach \start/\end/\label/\pos in {
+1/2/$\Delta_{12}$/above right,
+2/3/$\Delta_{23}$/below right,
+3/4/$\Delta_{34}$/below,
+4/5/$\Delta_{45}$/below left,
+5/1/$\Delta_{15}$/above left}{
+\draw[white] (\start) -- node[midway, \pos] {\label} (\end)
+}
+
+
+\end{tikzpicture}
+```
+:::
+
+
+---
+
+### $\mathrm{Gr}(2,6)$
+
+::: {style="display:flex; justify-content:center"}
+{{< include _tikz.text.qmd >}}
+:::
+
+---
+
+## Counting Cluster Variables {.smaller style="text-align: center;"}
+
+
+::: {style="display:flex; align-items: center; justify-content: center; flex-direction: column; gap: 1em; margin-top: 1em;"}
+
+::: {.fragment .fade-right fragment-index=1}
+k,n | 1,n | 2,n | 3,6 | 3,7 | 3,8 | [3,9]{.green .fragment .inblock .fade-down fragment-index=3} | [4,8]{.green  .inblock .fade-down .fragment fragment-index=3}|[4+,9+]{.red  .inblock .fade-down .fragment fragment-index=2}|
+|:-:|:-:|:-:|:-:|:-:|:-:|:-:|:-:|:-:|
+|#CV|$n$|$\frac{n(n-1)}{2}$|22|49|136|[$\infty$]{.green .fragment .fade-up .inblock fragment-index=3}|[$\infty$]{.green .fragment .fade-up .inblock fragment-index=3}|[$\infty$]{.red .inblock .fade-up .fragment fragment-index=2}|
+:::
+
+::: {.fragment .fade-up}
+| | 1 | 2 |3 |4 |5 |6 |7 |8 |9 |10 | 
+|:-:|:-:|:-:|:-:|:-:|:-:|:-:|:-:|:-:|:-:|:-:|
+|3,6|20|2|
+|3,7|35|14|
+|3,8|56|56|24|
+^|3,9|84|168|225|288|372|414|522|594|612|744|
+|3,10|120| 420| 1170| 3280| 8200| 19140|?|?|?|?|
+|3,11|165 |924 |4455 |20504 |77957 |256553|?|?|?|?|
+|3,12|220 |1848 |13860 |92980 |486172 |2061132|?|?|?|?|
+CDHHHL, *Clustering Cluster Algebras with Clusters*
+:::
+
+:::
+
+
+---
+
+### Categorification 
+
+[Following Jensen-King-Su,]{.fragment}
+
+::: {.fragment style="display:flex;  justify-content: center; align-items: center; gap: 2em"}
+```{.tikz}
+%%| filename: a-neat-dag
+%%| width: 30%
+
+\begin{tikzpicture}[scale=0.5,baseline=(bb.base)]
+\tikzset{every node/.style={text=white}}
+\path (0,0) node (bb) {};
+
+\newcommand{\radius}{3cm}
+
+\foreach \j in {1,...,5}{
+
+\path (90-72*\j:\radius) node[white] (w\j) {$\bullet$};
+
+\path (162-72*\j:\radius) node[white] (v\j) {};
+
+\path[->,>=latex] (v\j) edge[white,bend left=25,thick] node[white,auto] {$x$} (w\j);
+
+\path[->,>=latex] (w\j) edge[white,bend left=25,thick] node[white,auto] {$y$} (v\j);
+
+}
+
+\draw (90:\radius) node[above=3pt] {$5$};
+
+\draw (162:\radius) node[above left] {$4$};
+
+\draw (234:\radius) node[below left] {$3$};
+
+\draw (306:\radius) node[below right] {$2$};
+
+\draw (18:\radius) node[above right] {$1$};
+
+\end{tikzpicture}
+```
+::: {style="display:flex; flex-direction:column"}
+$C := \mathbb{C}Q/I$
+
+$I = \langle xy - yx, x^k - y^{n-k}\rangle$
+:::
+:::
+
+
+[$\mathrm{CM}C = C\text{-modules that are are free over } \mathbb{C}[[t]]$]{.fragment}
+
+[This is a Frobenius, stably 2-CY, Krull-Schmidt category.]{.fragment} 
+
+
+
+ ---
+
+---
+
+### Rank 1 modules
+
+'Rank 1' ~ put a copy of $\mathbb{C}[[t]]$ at each vertex.
+
+::: {style="display:flex; justify-content:center"}
+```{.tikz}
+%%| width: 80%
+\begin{tikzpicture}
+\foreach \x in {0,1,2,3,4,5} {
+\draw (2*\x,0) node[white] (\x) {$\mathbb{C}[[t]]$};
+}
+\foreach \i/\j in {0/1, 1/2, 2/3, 3/4, 4/5} {
+  \path[->] (\i) edge[white, bend left=25] (\j);
+  \path[->] (\j) edge[white, bend left=25] (\i);
+}
+\end{tikzpicture}
+```
+:::
+
+For $I \in \binom{[n]}{k}$ we define a rank 1 module $M_I$ via
+
+$$M_i = \mathbb{C}[[t]] \quad\forall i$$
+
+$$M_{x_i} = \begin{cases} 1 & \text{if }i \in I, \\%
+t & \text{otherwise} \end{cases},\quad%
+M_{y_i} = \begin{cases} t & \text{if }i \in I, \\%
+1 & \text{otherwise} \end{cases}$$
+
+---
+
+```{.tikz}
+\begin{tikzcd}
+\tikzset{every node/.style={text=white}}
+  a \ar[r] & b \ar[r] & c\\
+\end{tikzcd}
+```
+
+---
+
+### Cluster Character
+
+
+:::{style="display: flex; flex-direction:column; gap:2em; justify-content:center"}
+There is a *cluster character* $\Phi \colon \mathrm{CM}C \to \mathbb{C}[\mathrm{Gr}(k,n)]$.
+
+|$\text{CM}C$|$\mathbb{C}[\mathrm{Gr}(k,n)]$|
+|:-:|:-:|
+|rigid indecomposable modules | cluster variables|
+|maximal rigid objects (cluster tilting) | clusters|
+|extensions | exchange relations|
+
+
+Upshot: we can just (try to) count rigid indecomposables. 
+:::
+
+---
+
+### Counting Rigid Indecomposables
+
+Baur conjectures, generate higher rank candidates, discover mysterios quiver
+
+{{< placeholder 100 100 format=svg >}}
+
+---
+
+### Tubular Algebras
+
+
+
+Introduce tubular algebras, structure of AR quiver, the new enumeration problem
+
+Ringel's Dynkin Euclidean Wild Tubular Wild Hereditary Canonical "T"
+
+```{.tikz}
+
+\begin{tikzpicture}
+\draw (0,0) node[white] {Dynkin};
+\draw (2,0) node[white] {Euclidean};
+\draw (4,0) node[white] {Wild};
+\draw (2,-1) node[white] {Tubular};
+\draw (2,-2) node[white] {Wild};
+
+\draw (0,1) [white]-- (5,1);
+\end{tikzpicture}
+```
+
+
+--- 
+
+### Counting Rigid Indecomposables (again)
+
+Slope, degree, rank, ambient dimension problem
+
+---
+
+### Formulas
+
+{{< placeholder 400 200 format=svg >}}
+
+---
+
+### Graphs {.center}
+
+
+![](39-agent-svg.svg){width=90% height=auto style="display:block;"}
+
+
+---
+
+
+![](totient-count-48-1-1000000-1.png)
+
+---
+
