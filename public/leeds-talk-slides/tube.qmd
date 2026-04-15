@@ -1,0 +1,59 @@
+```{.tikz}
+%%| width: 25%
+\definecolor{myCol}{HTML}{282A36}
+\definecolor{myRed}{HTML}{FF5555}
+\definecolor{myGreen}{HTML}{50FA7B}
+  \newcommand{\foo}{13.75}
+\newcommand{\tube}[5]{
+  \begin{scope}[shift={(#1,0)}]
+  \draw (0,#4) ellipse (#3 and #5);
+  \draw (0,-#4) ++(+#3,0) arc[start angle = 360, end angle = 180, x radius = #3, y radius = #5];
+  \draw (#3,#4) -- (#3,-#4);
+  \draw (-#3,#4) -- (-#3,-#4);
+  \end{scope}
+
+}
+
+
+\begin{tikzpicture}[every path/.style={white}]
+
+
+
+
+
+
+  \tube{0}{}{.5}{1}{.1}
+  \tube{-.25}{}{.15}{0.8}{.04}
+  \tube{0}{}{.075}{0.8}{.025}
+  \tube{.15}{}{.05}{0.8}{.02}
+  \tube{.25}{}{.01}{0.8}{0.005}
+  \tube{.30}{}{.01}{0.8}{0.005}
+  \tube{.35}{}{.01}{0.8}{0.005}
+  \tube{.40}{}{.01}{0.8}{0.005}
+
+  \tikzset{every path/.append style={myGreen, thin}}
+  \draw (-.40,0.8) -- (-.40,0.4);
+  \draw (-.1,0.8) -- (-.1,0.4);
+  \draw (-.25,0.8) ellipse (.15 and .04);
+  \draw (-.25,0.4) ++(.15,0) arc[start angle = 360, end angle = 180, x radius = .15, y radius = 0.04];
+  \draw (-.075,0.8) -- (-0.075,0.6);
+  \draw (0.075,0.8) -- (0.075,0.6);
+  \draw (0,0.8) ellipse (.075 and .025);
+  \draw (-0.075,0.6) ++(.15,0) arc[start angle = 360, end angle = 180, x radius = .075, y radius = 0.025];
+
+  \draw (.15-0.05,0.8) -- (.15-0.05,0.66);
+  \draw (.15+0.05,0.8) -- (.15+0.05,0.66);
+  \draw (.15,0.8) ellipse (.05 and .02);
+  \draw (.15-0.05,0.66) ++(.1,0) arc[start angle = 360, end angle = 180, x radius = .05, y radius = 0.02];
+
+  % \tube{.23}{}{.00}{0.82}{0}
+  % \tube{.26}{}{.00}{0.82}{0}
+  % \tube{.29}{}{.00}{0.82}{0}
+  % \tube{.32}{}{.00}{0.82}{0}
+  %
+
+
+\end{tikzpicture}
+\end{document}
+
+```

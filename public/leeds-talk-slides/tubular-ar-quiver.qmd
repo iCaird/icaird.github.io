@@ -1,0 +1,37 @@
+```{.tikz}
+%%| width: 100%
+  \newcommand{\foo}{13.75}
+\newcommand{\tube}[2]{
+  \begin{scope}[shift={(#1,0)}]
+  \draw (0,1) ellipse (.5 and .1);
+  \draw (0,-1) ++(+.5,0) arc[start angle = 360, end angle = 180, x radius = 0.5, y radius = 0.1];
+  \draw (0.5,1) -- (0.5,-1);
+  \draw (-0.5,1) -- (-0.5,-1);
+  \node at (0,0) {\(#2\)};
+  \end{scope}
+
+}
+\begin{document}
+\begin{tikzpicture}[thick, every path/.style={white}]
+  \draw (0.25,0) -- (1.25,1);
+  \draw (0.25,0) -- (1.25,-1);
+  \draw (1.25,1) -- (2.75,1);
+  \draw (1.25,-1) -- (2.75,-1);
+  \node at (2,0) {\(\mathcal{P}_0\)};
+  \node at (3.1,0) {\dots};
+  \draw (\foo - 2, 1) -- (\foo,1) -- (\foo + 2/9,7/9) -- (\foo + 4/9,5/9) -- (\foo + 2/9,3/9) --
+        (\foo + 4/9, 1/9) -- (\foo + 6/9, -1/9) -- (\foo + 4/9, -3/9) -- (\foo + 6/9, -5/9) --
+        (\foo + 8/9, -7/9) -- (\foo + 6/9, -1) -- (\foo - 2, -1);
+  \node at (\foo - 1,0) {\(\mathcal{Q}_\infty\)};
+  \tube{4}{\mathcal{T}_0}
+  \tube{5.25}{}
+  \tube{6.5}{}
+  \node at (7.5,0) {\(\dots\)};
+  \tube{8.5}{\mathcal{T}_q}
+  \node at (9.5,0) {\(\dots\)};
+  \node at (11.5,0) {\dots};
+  \tube{10.5}{\mathcal{T}_\infty}
+\end{tikzpicture}
+\end{document}
+```
+

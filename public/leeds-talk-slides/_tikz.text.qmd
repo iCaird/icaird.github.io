@@ -38,7 +38,7 @@
 
 \hextri[14]{(0,3.5)}{2/6/Cyan,2/4/Goldenrod,4/6/Magenta};
 
-\foreach \i/\j/\col/\dot in {
+\foreach \i/\j/\col/\dot/\foo in {
 1/2//,
 1/3//,
 1/4/very thick/Magenta,
@@ -53,7 +53,7 @@
 6/11/,
 7/8/dotted/Magenta,
 7/12/dotted/Goldenrod,
-8/13//dotted,
+8/13//dotted/very thick,
 9/11,
 9/10/very thick/Magenta,
 10/13/very thick/Goldenrod,

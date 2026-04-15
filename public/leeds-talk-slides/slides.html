@@ -154,6 +154,14 @@
    .inblock {
    display: inline-block;
   }
+  .reveal .fragment.strike {
+    text-decoration: none;
+  }
+  .reveal .fragment.strike.visible {
+    text-decoration: line-through;
+    text-decoration-thickness: 0.15em;
+
+  }
 
   </style>
 </head>
@@ -175,12 +183,26 @@ Ellis Caird
 </section>
 <section class="slide level2">
 
-<h3 id="cluster-structure-on-grassmannians">Cluster Structure on Grassmannians</h3>
+<h3 id="i-am-counting-things">I am counting things</h3>
+<div style="display:flex; align-items:center; flex-direction:column;">
+<p><span class="fragment"><u>What am I counting?</u></span></p>
+<p><span class="fragment">Objects in a category</span></p>
+<p><span class="fragment"><u>Why am I counting them?</u></span></p>
+<p><span class="fragment">Because really I want to count cluster variables</span></p>
+<p><span class="fragment"><u>How am I counting them?</u></span></p>
+<p><span class="fragment"><span class="fragment strike"><em>Very carefully</em></span></span></p>
+<p><span class="fragment">By actually counting a third thing…</span></p>
+<p><span class="fragment"><em>very carefully</em></span></p>
+</div>
+</section>
+<section class="slide level2">
+
+<h3 class="smaller" id="cluster-structure-on-grassmannians">Cluster Structure on Grassmannians</h3>
 <ul>
 <li class="fragment"><p><span class="math inline">\(\mathrm{Gr}(k,n) = \{V \leq \mathbb{C}^n \mid \dim V = k\}\)</span></p></li>
 <li class="fragment"><p>Identify with the space of <span class="math inline">\((k \times n)\)</span> full rank matrices up to natural <span class="math inline">\(GL_k\)</span> action (change of basis)</p></li>
 <li class="fragment"><p>Projective variety with homogeneous coordinate ring <span class="math display">\[\mathbb{C}[\mathrm{Gr}(k,n)] = \mathbb{C}[\Delta_{ij}]/\langle\text{Plucker relations}\rangle\]</span></p></li>
-<li class="fragment"><p>Has a <em>cluster structure</em>, i.e.&nbsp;overlapping subsets (clusters) whose union generates the algebra and a rule to move between clusters.</p></li>
+<li class="fragment"><p>An example of a <em>cluster algebra</em>, i.e.&nbsp;has distinguised collections of generators (clusters) and certain rules allowing you to move between them (mutation/exchange relations). Can generate the whole algebra starting with just one cluster.</p></li>
 </ul>
 </section>
 <section class="slide level2">
@@ -358,44 +380,9 @@ Ellis Caird
 </section>
 <section class="slide level2">
 
-<h3 id="categorification">Categorification</h3>
-<p><span class="fragment">Following Jensen-King-Su,</span></p>
-<div class="fragment" style="display:flex;  justify-content: center; align-items: center; gap: 2em">
-<img data-src="slides_files/mediabag/a-neat-dag.svg" style="width:30.0%">
-<div style="display:flex; flex-direction:column">
-<p><span class="math inline">\(C := \mathbb{C}Q/I\)</span></p>
-<p><span class="math inline">\(I = \langle xy - yx, x^k - y^{n-k}\rangle\)</span></p>
-</div>
-</div>
-<p><span class="fragment"><span class="math inline">\(\mathrm{CM}C = C\text{-modules that are are free over } \mathbb{C}[[t]]\)</span></span></p>
-<p><span class="fragment">This is a Frobenius, stably 2-CY, Krull-Schmidt category.</span></p>
-</section>
-<section class="slide level2">
-
-</section>
-<section class="slide level2">
-
-<h3 id="rank-1-modules">Rank 1 modules</h3>
-<p>‘Rank 1’ ~ put a copy of <span class="math inline">\(\mathbb{C}[[t]]\)</span> at each vertex.</p>
-<div style="display:flex; justify-content:center">
-<img data-src="slides_files/mediabag/fc97bcdbe0e8791d3bf85b2beba1d02473e908ab.svg" style="width:80.0%">
-</div>
-<p>For <span class="math inline">\(I \in \binom{[n]}{k}\)</span> we define a rank 1 module <span class="math inline">\(M_I\)</span> via</p>
-<p><span class="math display">\[M_i = \mathbb{C}[[t]] \quad\forall i\]</span></p>
-<p><span class="math display">\[M_{x_i} = \begin{cases} 1 &amp; \text{if }i \in I, \\%
-t &amp; \text{otherwise} \end{cases},\quad%
-M_{y_i} = \begin{cases} t &amp; \text{if }i \in I, \\%
-1 &amp; \text{otherwise} \end{cases}\]</span></p>
-</section>
-<section class="slide level2">
-
-<img data-src="slides_files/mediabag/103a9f2b640a40d7ef95ac26b0c84730d889483b.svg">
-</section>
-<section class="slide level2">
-
 <h3 class="smaller" id="categorification-and-cluster-character">Categorification and Cluster Character</h3>
 <div style="display: flex; flex-direction:column; gap:0.5em; justify-content:center">
-<p>Cluster character <span class="math inline">\(\Phi \colon \text{CM}C \to \mathbb{C}[\mathrm{Gr}(k,n)]\)</span> yielding correspondences:</p>
+<p><em>Cluster character</em> <span class="math inline">\(\Phi \colon \text{CM}C \to \mathbb{C}[\mathrm{Gr}(k,n)]\)</span> yielding correspondences:</p>
 <table class="caption-top">
 <thead>
 <tr class="header">
@@ -405,26 +392,64 @@ M_{y_i} = \begin{cases} t &amp; \text{if }i \in I, \\%
 </thead>
 <tbody>
 <tr class="odd">
-<td style="text-align: center;">rigid indecomposable modules</td>
-<td style="text-align: center;">cluster variables</td>
+<td style="text-align: center;">Rigid indecomposables</td>
+<td style="text-align: center;">Cluster variables</td>
 </tr>
 <tr class="even">
-<td style="text-align: center;">maximal rigid objects (cluster tilting)</td>
-<td style="text-align: center;">clusters</td>
+<td style="text-align: center;">Maximal rigids (cluster tilting)</td>
+<td style="text-align: center;">Clusters</td>
 </tr>
 <tr class="odd">
-<td style="text-align: center;">extensions</td>
-<td style="text-align: center;">exchange relations</td>
+<td style="text-align: center;">Extensions</td>
+<td style="text-align: center;">Exchange relations</td>
 </tr>
 </tbody>
 </table>
-<p>Upshot: we can just (try to) count rigid indecomposable objects.</p>
+<p><strong>Upshot</strong>: we can just (try to) count rigid indecomposable objects.</p>
 </div>
 </section>
 <section class="slide level2">
 
+<h3 id="the-category">The category</h3>
+<p><span class="fragment">Following Jensen-King-Su,</span></p>
+<div class="fragment" style="display:flex;  justify-content: center; align-items: center; gap: 2em">
+<img data-src="slides_files/mediabag/a-neat-dag.svg" style="width:30.0%">
+<div style="display:flex; flex-direction:column">
+<p><span class="math inline">\(C := \mathbb{C}Q/I\)</span></p>
+<p><span class="math inline">\(I = \langle xy - yx, x^k - y^{n-k}\rangle\)</span></p>
+</div>
+</div>
+<p><span class="fragment"><span class="math inline">\(C\)</span> is an infinite dimensional <em>Iwanaga-Gorenstein</em> algebra.</span></p>
+<p><span class="fragment"><span class="math inline">\(\mathrm{CM}C = C\text{-modules that are are free over } \mathbb{C}[[t]]\)</span>.</span></p>
+<p><span class="fragment">This is a Frobenius, stably 2-CY, Krull-Schmidt category.</span></p>
+</section>
+<section class="slide level2">
+
+<h3 id="rank-1-modules">Rank 1 modules</h3>
+<div style="display:flex; justify-content:center">
+
+</div>
+<p>For <span class="math inline">\(I \in {[n] \choose k}\)</span> we define a rank 1 <span class="math inline">\(\mathrm{CM}C\)</span> module <span class="math inline">\(M_I\)</span> via</p>
+<p><span class="math display">\[M_i = \mathbb{C}[[t]] \quad\forall i\]</span></p>
+<p><span class="math display">\[M_{x_i} = \begin{cases} 1 &amp; \text{if }i \in I, \\%
+t &amp; \text{otherwise} \end{cases},\quad%
+M_{y_i} = \begin{cases} t &amp; \text{if }i \in I, \\%
+1 &amp; \text{otherwise} \end{cases}\]</span></p>
+<p>These are all rank 1s up to iso. They are all rigid.</p>
+<p>E.g. <span class="math inline">\(M_{124}\)</span> (yellow arrows act as 1)</p>
+<img data-src="slides_files/mediabag/a9522221efb56a5d6d90d35b433e928f2a8373bd.svg" style="width:100.0%">
+</section>
+<section class="slide level2">
+
+<h3 id="profile-of-a-rank-1">Profile of a rank 1</h3>
+<img data-src="slides_files/mediabag/a9522221efb56a5d6d90d35b433e928f2a8373bd.svg" style="width:100.0%">
+<img data-src="slides_files/mediabag/a396c60592efad5564b89438f9cf03510fdccfdc.svg" style="width:100.0%">
+</section>
+<section class="slide level2">
+
 <h3 id="higher-rank-modules">Higher rank modules</h3>
-<div style="display:flex; flex-direction:column; gap:1em">
+<div style="display:flex; flex-direction:column; gap:0.8em">
+<div class="fragment">
 <div class="callout callout-note no-icon callout-titled callout-style-simple">
 <div class="callout-body">
 <div class="callout-title">
@@ -435,9 +460,10 @@ M_{y_i} = \begin{cases} t &amp; \text{if }i \in I, \\%
 </div>
 </div>
 </div>
-<p>Translation: We can visualise such modules by stacking rank 1 modules on top of eachother.</p>
-<p>Question: Which stackings actually correspond to filtrations of rigid indecomposables?</p>
-<p>Answer: Hard. But possibly tractable in tame type. Let’s look at <span class="math inline">\(\text{Gr}(3,9)\)</span>.</p>
+</div>
+<p><span class="fragment"><strong>Translation</strong>: We can visualise such modules by stacking rank 1 modules on top of eachother.</span></p>
+<p><span class="fragment"><strong>Question</strong>: Which stackings actually correspond to filtrations of rigid indecomposables?</span></p>
+<p><span class="fragment"><strong>Answer</strong>: Hard. But possibly tractable in tame type. Let’s look at <span class="math inline">\(\text{Gr}(3,9)\)</span>.</span></p>
 </div>
 </section>
 <section class="slide level2">
@@ -445,11 +471,10 @@ M_{y_i} = \begin{cases} t &amp; \text{if }i \in I, \\%
 <h3 id="counting-rigid-indecomposables">Counting Rigid Indecomposables</h3>
 <ul>
 <li class="fragment">Baur et al conjecture that all ‘rigid profiles’ are rotates of certain canonical profiles.</li>
-<li class="fragment">However, not all of these are.</li>
+<li class="fragment">They were able to verify for low ranks (<span class="math inline">\(\leq 5\)</span>) by explicitly locating the modules in the AR quiver and showing they were rigid.</li>
+<li class="fragment">However, some rotates <em>aren’t</em> rigid. And it wasn’t particularly clear which ones weren’t or why.</li>
 </ul>
-<p>Baur conjectures, generate higher rank candidates, discover mysterios quiver</p>
-
-<img data-src="data:image/svg+xml;base64,PHN2ZyB3aWR0aCA9ICIxMDAiIGhlaWdodCA9ICIxMDAiIHhtbG5zID0gImh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIiB2aWV3Qm94ID0gIjAgMCAxMDAgMTAwIj48cmVjdCB3aWR0aCA9ICIxMDAiIGhlaWdodCA9ICIxMDAiIGZpbGwgPSAiI2RkZCIgLz48dGV4dCB4ID0gIjUwJSIgeSA9ICI1MCUiIGZvbnQtZmFtaWx5ID0gInNhbnMtc2VyaWYiIGZvbnQtc2l6ZSA9ICIxMCIgZmlsbCA9ICIjMDAwIiB0ZXh0LWFuY2hvciA9ICJtaWRkbGUiPjEwMCB4IDEwMDwvdGV4dD48L3N2Zz4=" class="r-stretch"></section>
+</section>
 <section class="slide level2">
 
 <h3 class="scrollable" id="generating-candidate-profiles">Generating Candidate Profiles</h3>
@@ -486,39 +511,80 @@ M_{y_i} = \begin{cases} t &amp; \text{if }i \in I, \\%
 </section>
 <section class="slide level2">
 
+<h3 id="a-mysterious-quiver-appears">A mysterious quiver appears</h3>
+<div style="display:flex; justify-content: center; gap: 2em">
+<img data-src="slides_files/mediabag/3db0afd5e73dd0a9b3126868027f06b046bd85e5.svg" style="width:50.0%">
+<img data-src="slides_files/mediabag/9932d4514bbf97dff12b30206733f21e01f71d6e.svg" style="width:25.0%">
+</div>
+<p><span class="fragment">Profiles are seemingly controlled by the above quiver with commutativity relations.</span></p>
+<p><span class="fragment">We now want to understand Schur representations of this algebra. But what is this algebra?</span> <span class="fragment">The plot thickens…</span></p>
+</section>
+<section class="slide level2">
+
 <h3 id="tubular-algebras">Tubular Algebras</h3>
-<p>Introduce tubular algebras, structure of AR quiver, the new enumeration problem</p>
-<p>Ringel’s Dynkin Euclidean Wild Tubular Wild Hereditary Canonical “T”</p>
-<img data-src="slides_files/mediabag/42c90e91ca817fec9fcd79d16ff899f3980db41c.svg">
+<div style="display:flex; flex-direction:column; align-items:center;">
+<p><span class="math inline">\(\begin{array}{ccc}\text{Dynkin} &amp; \text{Euclidean} &amp; \text{Wild}\\ &amp; \text{Tubular} &amp; \\ &amp; \text{Wild} &amp;\end{array}\)</span></p>
+<p>Tubular algebras are certain tubular extensions of tame concealed algebras. They have global dimension two. They are of tame (non-domestic) representation type.</p>
+<p>They are determined up to derived equivalence by their extension type which must be one of <span class="math inline">\((2,2,2,2;\lambda)\)</span>, <span class="math inline">\((3,3,3)\)</span>, <span class="math inline">\((2,3,6)\)</span>, <span class="math inline">\((2,4,4).\)</span></p>
+</div>
 </section>
 <section class="slide level2">
 
-<h3 id="counting-rigid-indecomposables-again">Counting Rigid Indecomposables (again)</h3>
-<p>Slope, degree, rank, ambient dimension problem</p>
+<h3 id="ar-quiver-of-tubular-algebra">AR Quiver of Tubular Algebra</h3>
+<img data-src="slides_files/mediabag/9c775fef6e7534db22e81f1fc9c55e527ad82cf1.svg" style="width:100.0%">
+<p>(Regular) Rigid iff high up enough in a tube.</p>
+<div style="display:flex; gap: 2em">
+<img data-src="slides_files/mediabag/39585d1b2205dc7a21093c55448d8f8374ff8cbd.svg" style="width:25.0%">
+<p>Data:</p>
+<ul>
+<li class="fragment"><span class="math inline">\(\mathrm{deg} = \langle\delta_0,-\rangle\)</span></li>
+<li class="fragment"><span class="math inline">\(\mathrm{rk} = \langle-,\delta_\infty\rangle\)</span></li>
+<li class="fragment"><span class="math inline">\(\mathrm{slope} = \frac{\mathrm{deg}}{\mathrm{rk}}\)</span></li>
+<li class="fragment">ambient dimension</li>
+</ul>
+</div>
 </section>
 <section class="slide level2">
 
-<h3 id="shrinking-functors">Shrinking Functors</h3>
+<h3 class="center" id="counting-rigid-indecomposables-again">Counting Rigid Indecomposables (again)</h3>
+<div style="display:flex; flex-direction:column; justify-content:center; gap: 0.5em">
+<p>Let <span class="math inline">\(P\)</span> be the tubular algebra obtained previously.</p>
+<p><strong>Question</strong>: Which tubes have <span class="math inline">\(P\)</span>-modules of ambient dimension <span class="math inline">\(r\)</span> high up enough in them?</p>
+<p><strong>Tactic</strong>: Understand slope 1 and then use Ringel’s shrinking functors to bounce around tubes and track how the data changes.</p>
+<p>In practice, we can do this numerically to see if there might be some structure and then work out a formula later. Let’s see what the graph looks like.</p>
+</div>
 </section>
 <section class="slide level2">
 
-</section>
-<section class="slide level2">
-
-<h3 id="formulas">Formulas</h3>
-
-<img data-src="data:image/svg+xml;base64,PHN2ZyB3aWR0aCA9ICI0MDAiIGhlaWdodCA9ICIyMDAiIHhtbG5zID0gImh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIiB2aWV3Qm94ID0gIjAgMCA0MDAgMjAwIj48cmVjdCB3aWR0aCA9ICI0MDAiIGhlaWdodCA9ICIyMDAiIGZpbGwgPSAiI2RkZCIgLz48dGV4dCB4ID0gIjUwJSIgeSA9ICI1MCUiIGZvbnQtZmFtaWx5ID0gInNhbnMtc2VyaWYiIGZvbnQtc2l6ZSA9ICIyMCIgZmlsbCA9ICIjMDAwIiB0ZXh0LWFuY2hvciA9ICJtaWRkbGUiPjQwMCB4IDIwMDwvdGV4dD48L3N2Zz4=" class="r-stretch"></section>
-<section class="slide level2">
-
-<h3 class="center" id="graphs">Graphs</h3>
+<h3 class="center" id="section">3,9</h3>
 
 <img data-src="39-agent-svg.svg" style="display:block;;width:90.0%" class="r-stretch"></section>
 <section class="slide level2">
 
+<h3 class="smaller" id="formula">Formula</h3>
+<div style="display:flex; flex-direction:column; align-items:center; gap: 1em">
+<p><span class="math inline">\(\begin{align*} N_6(r) &amp;= 3\phi_6(2r-1) + 6\phi_6(2r) + 3\phi_6(2r+1)\\\\
+N_3(r) &amp;= 3\phi_3(r) \\\\
+N_2(r) &amp;= \begin{cases} 0 &amp; r \equiv 0 \mod 3\\\
+\phi_2\left(\frac{2r-2}{3}\right) + \phi_2\left(\frac{2r+1}{3}\right) &amp; r \equiv 1 \mod 3\\\\
+\phi_2\left(\frac{2r-1}{3}\right) + \phi_2\left(\frac{2r+2}{3}\right) &amp; r \equiv 2 \mod 3
+\end{cases}
+\end{align*}\)</span></p>
+<p><span style="color:lightgray"><span class="math inline">\(\phi_i(x) = \# \{ j &lt; x \mid \gcd (x,j) &lt; i \}\)</span></span></p>
+</div>
+</section>
+<section class="slide level2">
+
+<h3 id="thanks-for-listening">Thanks for listening!</h3>
 
 <img data-src="totient-count-48-1-1000000-1.png" class="r-stretch"></section>
 <section class="slide level2">
 
+<h3 id="gory-details">Gory details</h3>
+<p>For 3,9 and 4,8 we have the following equivalences of trangulated categories</p>
+<p><span class="math display">\[\underline{\text{CM}}C \cong \frac{\mathcal{D}^b{(\operatorname{coh}\mathbb{X})}}{\langle\tau^{-}[1]\rangle} \cong \frac{\mathcal{D}^b{(\operatorname{mod}P})}{\langle\tau^{-}[1]\rangle}\]</span></p>
+<p>where <span class="math inline">\(\mathbb{X}\)</span> is a weighted projective line of weight 2,3,6 or 2,4,4 respectively.</p>
+<p>There is a cluster tilting object <span class="math inline">\(T\)</span> in <span class="math inline">\(\mathrm{CM}C\)</span> such that <span class="math inline">\(\underline{\mathrm{End}}(T)^{\mathrm{op}} \cong \widehat{P}\)</span>, the relation extension of <span class="math inline">\(P\)</span>.</p>
 
 </section>
     </div>
