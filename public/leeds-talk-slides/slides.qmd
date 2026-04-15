@@ -434,7 +434,7 @@ Any rigid indecomposable has a unique 'generic filtration' by rank 1 modules.
 
 [Profiles are seemingly controlled by the above quiver with commutativity relations.]{.fragment}
 
-[We now want to understand Schur representations of this algebra. But what is this algebra?]{.fragment}
+[We now want to understand rigid modules over this algebra. But who is this algebra?!]{.fragment}
 [The plot thickens...]{.fragment}
 
 
@@ -445,9 +445,11 @@ Any rigid indecomposable has a unique 'generic filtration' by rank 1 modules.
 :::{style="display:flex; flex-direction:column; align-items:center;"}
 $\begin{array}{ccc}\text{Dynkin} & \text{Euclidean} & \text{Wild}\\ & \text{Tubular} & \\ & \text{Wild} &\end{array}$
 
-Tubular algebras are certain tubular extensions of tame concealed algebras. They have global dimension two. They are of tame (non-domestic) representation type.
+[Tubular algebras are certain tubular extensions of tame concealed algebras.]{.fragment} 
+[They have global dimension two.]{.fragment}
+[They are of tame (non-domestic) representation type.]{.fragment}
 
-They are determined up to derived equivalence by their extension type which must be one of $(2,2,2,2;\lambda)$, $(3,3,3)$, $(2,3,6)$, $(2,4,4).$
+[They are determined up to derived equivalence by their extension type which must be one of $(2,2,2,2;\lambda)$, $(3,3,3)$, $(2,3,6)$, $(2,4,4).$]{.fragment}
 :::
 
 ---
@@ -480,14 +482,14 @@ Data:
 
 
 :::{style="display:flex; flex-direction:column; justify-content:center; gap: 0.5em"}
-Let $P$ be the tubular algebra obtained previously.
+[Let $P$ be the tubular algebra obtained previously.]{.fragment}
 
-**Question**: Which tubes have $P$-modules of ambient dimension $r$ high up enough in them?
+[**Question**: Which tubes have $P$-modules of ambient dimension $r$ high up enough in them?]{.fragment}
 
-**Tactic**: Understand slope 1 and then use Ringel's shrinking functors to bounce around tubes and
-track how the data changes.
+[**Tactic**: Understand slope 1 and then use Ringel's shrinking functors to bounce around tubes and
+track how the data changes.]{.fragment}
 
-In practice, we can do this numerically to see if there might be some structure and then work out a formula later. Let's see what the graph looks like.
+[In practice, we can do this numerically to see if there might be some structure and then work out a formula later. Let's see what the graph looks like.]{.fragment}
 :::
 
 
