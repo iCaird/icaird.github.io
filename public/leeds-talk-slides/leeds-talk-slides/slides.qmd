@@ -1,0 +1,543 @@
+---
+title: "Counting cluster variables in tame Grassmannians"
+author: "Ellis Caird"
+revealjs-plugins:
+  - diagram
+format: 
+  revealjs:
+    filters:
+      - fragment.lua
+      - diagram
+    incremental: true
+    theme: dracula
+    include-in-header:
+      text: |
+        <style>
+        .reveal table td:nth-child(1),
+        .reveal table th:nth-child(1) {
+          border-right: 2px solid white !important;
+        }
+        .reveal table th {
+        border-bottom: 2px solid white !important;
+        }
+        .red { color: #FF5555;}
+        .green { color: #50FA7B;}
+        .fragment-1 { .fragment; .fragment-index}
+        .reveal .highlight-green.visible {
+        color: #50FA7B !important;
+        .reveal .fragment.my-bold {
+        font-weight: normal !important;
+        }
+        .reveal .fragment.my-bold.visible {
+        font-weight: bold !important;
+        }
+        }
+        .reveal tr.my-bold.visible td,
+        .reveal tr.my-bold.visible th {
+        font-weight: bold !important;
+        }
+        .reveal h2,h3 {
+        text-align: center;
+         }
+         .inblock {
+         display: inline-block;
+        }
+        .reveal .fragment.strike {
+          text-decoration: none;
+        }
+        .reveal .fragment.strike.visible {
+          text-decoration: line-through;
+          text-decoration-thickness: 0.15em;
+          
+        }
+
+        </style>
+
+diagram:
+  cache: true
+  engine:
+    tikz:
+      header-includes:
+        - '\usepackage[dvipsnames]{xcolor}'
+        - '\usepackage{amsmath}'
+        - '\usepackage{amssymb,mathtools}'
+        - '\usetikzlibrary{cd}'
+
+---
+
+### I am counting things
+:::{style="display:flex; align-items:center; flex-direction:column;"}
+[What am I counting?]{.underline .fragment} 
+
+[Objects in a category]{.fragment}
+
+[Why am I counting them?]{.underline .fragment}
+
+[Because really I want to count cluster variables]{.fragment}
+
+[How am I counting them?]{.underline .fragment}
+
+[[*Very carefully*]{.fragment .strike}]{.fragment}
+
+[By actually counting a third thing...]{.fragment} 
+
+[*very carefully*]{.fragment}
+:::
+
+---
+
+
+### Cluster Structure on Grassmannians {.smaller}
+
+
+- $\mathrm{Gr}(k,n) = \{V \leq \mathbb{C}^n \mid \dim V = k\}$
+- Identify with the space of $(k \times n)$ full rank matrices up to natural $GL_k$ action (change of basis)
+- Projective variety with homogeneous coordinate ring
+$$\mathbb{C}[\mathrm{Gr}(k,n)] = \mathbb{C}[\Delta_{ij}]/\langle\text{Plucker relations}\rangle$$
+
+- An example of a *cluster algebra*, i.e. has distinguised collections of generators (clusters) and certain rules allowing you to move between them (mutation/exchange relations).
+
+- The whole algebra can be generated starting with just one cluster.
+
+---
+
+### Example: $\mathrm{Gr}(2,5)$
+
+
+::: {style="display:flex; justify-content: center;"}
+```{.tikz}
+%%| width: 100%
+\begin{tikzpicture}
+\tikzset{every node/.style={text=white, scale=0.5}}
+
+\foreach \angle/\label/\pos in {
+  90/1/above,
+  162/5/left,
+  234/4/below left,
+  306/3/below right,
+  18/2/right}{
+  \coordinate (\label) at (\angle:1);
+  \node[white, \pos] at (\angle:1) {$\label$};
+}
+\draw[white] (1) -- (2) -- (3) -- (4) -- (5) -- cycle;
+\draw[Goldenrod] (1) -- node[Goldenrod, midway, above right, inner sep=1pt] {$\Delta_{13}$} (3);
+\draw[white] (1) -- node[midway, above left, inner sep=1pt] {$\Delta_{14}$} (4);
+
+\foreach \start/\end/\label/\pos in {
+1/2/$\Delta_{12}$/above right,
+2/3/$\Delta_{23}$/below right,
+3/4/$\Delta_{34}$/below,
+4/5/$\Delta_{45}$/below left,
+5/1/$\Delta_{15}$/above left}{
+\draw[white] (\start) -- node[midway, \pos] {\label} (\end)
+}
+
+
+\end{tikzpicture}
+\begin{tikzpicture}
+\tikzset{every node/.style={text=white, scale=0.5}}
+
+\foreach \angle/\label/\pos in {
+  90/1/above,
+  162/5/left,
+  234/4/below left,
+  306/3/below right,
+  18/2/right}{
+  \coordinate (\label) at (\angle:1);
+  \node[white, \pos] at (\angle:1) {$\label$};
+}
+\draw[white] (1) -- (2) -- (3) -- (4) -- (5) -- cycle;
+\draw[Goldenrod] (2) -- node[Goldenrod,midway, below right, inner sep=1pt] {$\Delta_{24}$} (4);
+\draw[white] (1) -- node[midway, above left, inner sep=1pt] {$\Delta_{14}$} (4);
+
+\foreach \start/\end/\label/\pos in {
+1/2/$\Delta_{12}$/above right,
+2/3/$\Delta_{23}$/below right,
+3/4/$\Delta_{34}$/below,
+4/5/$\Delta_{45}$/below left,
+5/1/$\Delta_{15}$/above left}{
+\draw[white] (\start) -- node[midway, \pos] {\label} (\end)
+}
+
+
+\end{tikzpicture}
+```
+:::
+
+
+---
+
+### $\mathrm{Gr}(2,6)$
+
+::: {style="display:flex; justify-content:center"}
+{{< include _tikz.text.qmd >}}
+:::
+
+---
+
+## Counting Cluster Variables {.smaller style="text-align: center;"}
+
+
+::: {style="display:flex; align-items: center; justify-content: center; flex-direction: column; gap: 1em; margin-top: 1em;"}
+
+::: {.fragment .fade-right fragment-index=1}
+k,n | 1,n | 2,n | 3,6 | 3,7 | 3,8 | [3,9]{.green .fragment .inblock .fade-down fragment-index=3} | [4,8]{.green  .inblock .fade-down .fragment fragment-index=3}|[4+,9+]{.red  .inblock .fade-down .fragment fragment-index=2}|
+|:-:|:-:|:-:|:-:|:-:|:-:|:-:|:-:|:-:|
+|#CV|$n$|$\frac{n(n-1)}{2}$|22|49|136|[$\infty$]{.green .fragment .fade-up .inblock fragment-index=3}|[$\infty$]{.green .fragment .fade-up .inblock fragment-index=3}|[$\infty$]{.red .inblock .fade-up .fragment fragment-index=2}|
+:::
+
+::: {.fragment .fade-up}
+| | 1 | 2 |3 |4 |5 |6 |7 |8 |9 |10 | 
+|:-:|:-:|:-:|:-:|:-:|:-:|:-:|:-:|:-:|:-:|:-:|
+|3,6|20|2|
+|3,7|35|14|
+|3,8|56|56|24|
+^|3,9|84|168|225|288|372|414|522|594|612|744|
+|3,10|120| 420| 1170| 3280| 8200| 19140|?|?|?|?|
+|3,11|165 |924 |4455 |20504 |77957 |256553|?|?|?|?|
+|3,12|220 |1848 |13860 |92980 |486172 |2061132|?|?|?|?|
+CDHHHL, *Clustering Cluster Algebras with Clusters*
+:::
+
+:::
+
+---
+
+### Categorification and Cluster Character {.smaller}
+
+
+:::{style="display: flex; flex-direction:column; gap:0.5em; justify-content:center"}
+
+*Cluster character* $\Phi \colon \text{CM}C \to \mathbb{C}[\mathrm{Gr}(k,n)]$ yielding correspondences:
+
+|$\text{CM}C$|$\mathbb{C}[\mathrm{Gr}(k,n)]$|
+|:-:|:-:|
+|Rigid indecomposables | Cluster variables|
+|Maximal rigids (cluster tilting) | Clusters|
+|Extensions | Exchange relations|
+
+
+**Upshot**: we can just (try to) count rigid indecomposable objects. 
+:::
+
+
+---
+
+### The category
+
+[Following Jensen-King-Su,]{.fragment}
+
+::: {.fragment style="display:flex;  justify-content: center; align-items: center; gap: 2em"}
+```{.tikz}
+%%| filename: a-neat-dag
+%%| width: 30%
+
+\begin{tikzpicture}[scale=0.5,baseline=(bb.base)]
+\tikzset{every node/.style={text=white}}
+\path (0,0) node (bb) {};
+
+\newcommand{\radius}{3cm}
+
+\foreach \j in {1,...,5}{
+
+\path (90-72*\j:\radius) node[white] (w\j) {$\bullet$};
+
+\path (162-72*\j:\radius) node[white] (v\j) {};
+
+\path[->,>=latex] (v\j) edge[white,bend left=25,thick] node[white,auto] {$x$} (w\j);
+
+\path[->,>=latex] (w\j) edge[white,bend left=25,thick] node[white,auto] {$y$} (v\j);
+
+}
+
+\draw (90:\radius) node[above=3pt] {$5$};
+
+\draw (162:\radius) node[above left] {$4$};
+
+\draw (234:\radius) node[below left] {$3$};
+
+\draw (306:\radius) node[below right] {$2$};
+
+\draw (18:\radius) node[above right] {$1$};
+
+\end{tikzpicture}
+```
+::: {style="display:flex; flex-direction:column"}
+$C := \mathbb{C}Q/I$
+
+$I = \langle xy - yx, x^k - y^{n-k}\rangle$
+:::
+:::
+
+[$C$ is an infinite dimensional *Iwanaga-Gorenstein* algebra.]{.fragment}
+
+[$\mathrm{CM}C = C\text{-modules that are are free over } \mathbb{C}[[t]]$.]{.fragment}
+
+[This is a Frobenius, stably 2-CY, Krull-Schmidt category.]{.fragment} 
+
+
+
+
+---
+
+### Rank 1 modules
+
+
+::: {style="display:flex; justify-content:center"}
+:::
+
+For $I \in {[n] \choose k}$ we define a rank 1 $\mathrm{CM}C$ module $M_I$ via
+
+$$M_i = \mathbb{C}[[t]] \quad\forall i$$
+
+$$M_{x_i} = \begin{cases} 1 & \text{if }i \in I, \\%
+t & \text{otherwise} \end{cases},\quad%
+M_{y_i} = \begin{cases} t & \text{if }i \in I, \\%
+1 & \text{otherwise} \end{cases}$$
+
+These are all rank 1s up to iso. They are all rigid.
+
+E.g. $M_{124}$ (yellow arrows act as 1)
+
+```{.tikz}
+%%| width: 100%
+\begin{tikzpicture}[thick]
+\foreach \x in {0,1,2,3,4,5,6} {
+\draw (2*\x,0) node[white] (\x) {\large$\mathbb{C}[[t]]$};
+}
+\foreach \i/\j/\cola/\colb in {0/1/white/Goldenrod, 1/2/white/Goldenrod, 2/3/Goldenrod/white, 3/4/white/Goldenrod, 4/5/Goldenrod/white, 5/6/Goldenrod/white} {
+  \path[->] (\i) edge[\colb, bend left=25] (\j);
+  \path[->] (\j) edge[\cola, bend left=25] (\i);
+}
+\end{tikzpicture}
+```
+
+---
+
+### Profile of a rank 1
+
+```{.tikz}
+%%| width: 100%
+\begin{tikzpicture}[thick]
+\foreach \x in {0,1,2,3,4,5,6} {
+\draw (2*\x,0) node[white] (\x) {\large$\mathbb{C}[[t]]$};
+}
+\foreach \i/\j/\cola/\colb in {0/1/white/Goldenrod, 1/2/white/Goldenrod, 2/3/Goldenrod/white, 3/4/white/Goldenrod, 4/5/Goldenrod/white, 5/6/Goldenrod/white} {
+  \path[->] (\i) edge[\colb, bend left=25] (\j);
+  \path[->] (\j) edge[\cola, bend left=25] (\i);
+}
+\end{tikzpicture}
+```
+```{.tikz}
+%%| width: 100%
+\begin{tikzpicture}[thick]
+\foreach \x/\offset in {0/0,1/1,2/2,3/1,4/2,5/1,6/0} {
+\foreach \y in {0,...,3} {
+\draw (2*\x,-2*\y-\offset) node[white] (\x-\y) {$t^{\y}$};
+}
+}
+% \foreach \i/\j/\cola/\colb in {0/1/white/Goldenrod, 1/2/white/Goldenrod, 2/3/Goldenrod/white, 3/4/white/Goldenrod, 4/5/Goldenrod/white, 5/6/Goldenrod/white} {
+%   \path[->] (\i) edge[\colb, bend left=25] (\j);
+%   \path[->] (\j) edge[\cola, bend left=25] (\i);
+% }
+\path[->] (0-0) edge[Goldenrod] (1-0);
+\path[->] (1-0) edge[Goldenrod] (2-0);
+\path[->] (3-0) edge[Goldenrod] (2-0);
+\path[->] (3-0) edge[Goldenrod] (4-0);
+\path[->] (5-0) edge[Goldenrod] (4-0);
+\path[->] (6-0) edge[Goldenrod] (5-0);
+\end{tikzpicture}
+```
+
+
+---
+
+
+
+### Higher rank modules 
+
+::: {style="display:flex; flex-direction:column; gap:0.8em"}
+::: {.callout-note .fragment appearance="minimal"}
+## Theorem [JKS]
+Any rigid indecomposable has a unique 'generic filtration' by rank 1 modules.
+:::
+
+[**Translation**: We can visualise such modules by stacking rank 1 modules on top of eachother.]{.fragment}
+
+[**Question**: Which stackings actually correspond to filtrations of rigid indecomposables?]{.fragment} 
+
+[**Answer**: Hard. But possibly tractable in tame type. Let's look at $\text{Gr}(3,9)$.]{.fragment}
+:::
+
+---
+
+
+### Counting Rigid Indecomposables
+
+- Baur et al conjecture that all 'rigid profiles' are rotates of certain canonical profiles.
+- They were able to verify for low ranks ($\leq 5$) by explicitly locating the modules in the AR quiver and showing they were rigid.
+- However, some rotates *aren't* rigid. And it wasn't particularly clear which ones weren't or why.
+
+
+
+---
+
+### Generating Candidate Profiles {.scrollable}
+
+:::{.panel-tabset style="background:white;"}
+
+
+
+### R4 {.r-stretch}
+
+:::{style="overflow-y:auto; max-height:80vh; width:100%;"}
+![](39rank4.png){width="100%"}
+:::
+
+### R5 {.r-stretch}
+
+:::{style="overflow-y:auto; max-height:80vh; width:100%;"}
+![](39rank5.png){width="100%"}
+:::
+
+### R15 {.r-stretch}
+
+:::{style="overflow-y:auto; max-height:80vh; width:100%;"}
+![](39rank15.png){width="100%"}
+:::
+
+### R29 {.r-stretch}
+
+:::{style="overflow-y:auto; max-height:80vh; width:100%;"}
+![](39rank29-uncollapsed.png){width="100%"}
+:::
+
+### R29-C {.r-stretch}
+
+:::{style="overflow-y:auto; max-height:80vh; width:100%;"}
+![](39rank29.png){width="100%"}
+:::
+:::
+
+---
+
+### A mysterious quiver appears
+
+
+
+
+
+:::{style="display:flex; justify-content: center; gap: 2em"}
+{{< include 39-rank-7.qmd >}}
+
+{{< include subspace-quiver.qmd >}}
+:::
+
+[Profiles are seemingly controlled by the above quiver with commutativity relations.]{.fragment}
+
+[We now want to understand Schur representations of this algebra. But what is this algebra?]{.fragment}
+[The plot thickens...]{.fragment}
+
+
+---
+
+### Tubular Algebras
+
+:::{style="display:flex; flex-direction:column; align-items:center;"}
+$\begin{array}{ccc}\text{Dynkin} & \text{Euclidean} & \text{Wild}\\ & \text{Tubular} & \\ & \text{Wild} &\end{array}$
+
+Tubular algebras are certain tubular extensions of tame concealed algebras. They have global dimension two. They are of tame (non-domestic) representation type.
+
+They are determined up to derived equivalence by their extension type which must be one of $(2,2,2,2;\lambda)$, $(3,3,3)$, $(2,3,6)$, $(2,4,4).$
+:::
+
+---
+
+### AR Quiver of Tubular Algebra
+
+
+{{< include tubular-ar-quiver.qmd >}}
+
+(Regular) Rigid iff high up enough in a tube.
+
+:::{style="display:flex; gap: 2em"}
+{{< include tube.qmd >}}
+
+
+Data:
+
+- $\mathrm{deg} = \langle\delta_0,-\rangle$
+- $\mathrm{rk} = \langle-,\delta_\infty\rangle$
+- $\mathrm{slope} = \frac{\mathrm{deg}}{\mathrm{rk}}$
+- ambient dimension 
+:::
+
+
+
+--- 
+
+### Counting Rigid Indecomposables (again) {.center}
+
+
+
+:::{style="display:flex; flex-direction:column; justify-content:center; gap: 0.5em"}
+Let $P$ be the tubular algebra obtained previously.
+
+**Question**: Which tubes have $P$-modules of ambient dimension $r$ high up enough in them?
+
+**Tactic**: Understand slope 1 and then use Ringel's shrinking functors to bounce around tubes and
+track how the data changes.
+
+In practice, we can do this numerically to see if there might be some structure and then work out a formula later.
+:::
+
+
+
+
+
+---
+
+### 3,9 {.center}
+
+
+![](39-agent-svg.svg){width=90% height=auto style="display:block;"}
+
+
+---
+
+### Formula {.smaller}
+
+:::{style="display:flex; flex-direction:column; align-items:center; gap: 1em"}
+$\begin{align*} N_6(r) &= 3\phi_6(2r-1) + 6\phi_6(2r) + 3\phi_6(2r+1)\\\\
+N_3(r) &= 3\phi_3(r) \\\\
+N_2(r) &= \begin{cases} 0 & r \equiv 0 \mod 3\\\ 
+\phi_2\left(\frac{2r-2}{3}\right) + \phi_2\left(\frac{2r+1}{3}\right) & r \equiv 1 \mod 3\\\\
+\phi_2\left(\frac{2r-1}{3}\right) + \phi_2\left(\frac{2r+2}{3}\right) & r \equiv 2 \mod 3
+\end{cases}
+\end{align*}$
+
+[$\phi_i(x) = \# \{ j < x \mid \gcd (x,j) < i \}$]{style="color:lightgray"}
+:::
+
+---
+
+### Thanks for listening!
+![](totient-count-48-1-1000000-1.png)
+
+
+
+---
+
+
+### Gory details
+
+For 3,9 and 4,8 we have the following equivalences of trangulated categories
+
+$$\underline{\text{CM}}C \cong \frac{\mathcal{D}^b{(\operatorname{coh}\mathbb{X})}}{\langle\tau^{-}[1]\rangle} \cong \frac{\mathcal{D}^b{(\operatorname{mod}P})}{\langle\tau^{-}[1]\rangle}$$
+
+where $\mathbb{X}$ is a weighted projective line of weight 2,3,6 or 2,4,4 respectively.
+
+There is a cluster tilting object $T$ in $\mathrm{CM}C$ such that $\underline{\mathrm{End}}(T)^{\mathrm{op}} \cong \widehat{P}$, the relation extension of $P$. 
+
+
+
