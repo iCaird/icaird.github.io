@@ -251,7 +251,7 @@ section.has-light-background, section.has-light-background h1, section.has-light
 
 .reveal table {
   margin: auto;
-  /* border-collapse: collapse; */
+  border-collapse: collapse;
   border-spacing: 0;
 }
 
@@ -261,12 +261,8 @@ section.has-light-background, section.has-light-background h1, section.has-light
 
 .reveal table th,
 .reveal table td {
-  text-align: center;
+  text-align: left;
   padding: 0.2em 0.5em 0.2em 0.5em;
-  border-bottom: none;
-}
-
-.reveal table th {
   border-bottom: 1px solid;
 }
 
@@ -275,24 +271,14 @@ section.has-light-background, section.has-light-background h1, section.has-light
   text-align: center;
 }
 
-.reveal table th[align=center],
-.reveal table td[align=center] {
+.reveal table th[align=right],
+.reveal table td[align=right] {
   text-align: right;
 }
 
 .reveal table tbody tr:last-child th,
 .reveal table tbody tr:last-child td {
   border-bottom: none;
-}
-
-.reveal table tr td:first-child,
-.reveal table tr th:first-child {
-  font-weight: bold;
-  border-right: 1px solid;
-}
-.reveal table td.black-cell {
-  background-color: black;
-  background: black;
 }
 
 .reveal sup {

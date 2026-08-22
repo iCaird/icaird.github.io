@@ -174,7 +174,13 @@ is isomorphic to the relation extension of $P$.</p>
     <script src="plugin/highlight/highlight.js"></script>
     <script src="plugin/math/math.js"></script>
     <script src="plugin/zoom/zoom.js"></script>
-    <script>
+    <script type="module">
+      import RevealMarkdown from 'https://cdn.jsdelivr.net/npm/reveal.js@4/plugin/markdown/markdown.esm.js';
+import RevealHighlight from 'https://cdn.jsdelivr.net/npm/reveal.js@4/plugin/highlight/highlight.esm.js';
+import RevealNotes from 'https://cdn.jsdelivr.net/npm/reveal.js@4/plugin/notes/notes.esm.js';
+import RevealMath from 'https://cdn.jsdelivr.net/npm/reveal.js@4/plugin/math/math.esm.js';
+import RevealZoom from 'https://cdn.jsdelivr.net/npm/reveal.js@4/plugin/zoom/zoom.esm.js';
+
 const style = document.createElement('style');
 style.textContent = `
   .reveal table th { border-bottom: 2px solid white !important; }

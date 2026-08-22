@@ -11,6 +11,6 @@ const { sketchPath, width = '800px', height = '400px' } = Astro.props;
 
 <iframe 
   src={`/sketch-viewer.html?sketch=${encodeURIComponent(sketchPath)}`}
-  style={`width: ${width}; height: ${height}; border: none;`}
+  style={`width: ${width}; height: ${height}; border: 1px white solid; border-radius: 5px`}
   title="p5 sketch"
 ></iframe>

@@ -99,6 +99,16 @@ can get behind as being a sensible number to assign to the act of doing nothing.
 is [little-endian](https://en.wikipedia.org/wiki/Endianness). When the Game Boy is reading the bytes of a number,
 the first byte it reads is the least significant and the last byte it reads is the most significant. 
 
+Okay so `C3` must mean `jp` which we could perhaps figure out means "jump" and then the next two bytes tell the Game Boy
+where to jump *to*, i.e. the address that it should start reading instructions from next. What's at
+address `$0150`? Another jump! `C3 0C 02` means we're jumping to address `$020C`. What's at address $
+
+
+## What language should I write in?
+
+## How do I even get my code to read bytes?
+
+## How do we sort the instructions?
 
 
 

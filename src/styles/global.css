@@ -1,3 +1,6 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@400;500;600;700&display=swap');
+/* @import url('https://fonts.googleapis.com/css2?family=Bitter:wght@400;500;600;700&display=swap'); */
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -46,8 +49,8 @@ article {
 
 @layer utilities {
   article a {
-    @apply font-sans text-current underline underline-offset-[3px];
-    @apply decoration-black/30 dark:decoration-white/30;
+    @apply font-sans text-current text-orange-500 underline underline-offset-[3px];
+    @apply decoration-black/30 dark:text-orange-500;
     @apply transition-colors duration-300 ease-in-out;
   }
   article a:hover {

@@ -1,0 +1,39 @@
+---
+import Layout from '@layouts/Layout.astro';
+import Container from '@components/Container.astro';
+import fs from 'fs';
+import path from "node:path";
+
+export function getStaticPaths() {
+  const sketchDir = path.join(process.cwd(), "public", "sketches");
+
+  const files = fs
+    .readdirSync(sketchDir)
+    .filter((file) => file.endsWith(".js"));
+
+  return files.map((file) => ({
+    params: {
+      slug: path.basename(file, ".js"),
+    },
+  }));
+}
+
+const { slug } = Astro.params;
+---
+
+<Layout title={slug} description="Interactive p5 sketch">
+  <Container>
+    <h1>{slug}</h1>
+  </Container>
+</Layout>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.7.0/p5.min.js"></script>
+<script define:vars={{ slug }} src={`/sketches/${slug}.js`}></script>
+
+<style>
+  body {
+    display: flex;
+    align-items: center;
+    
+  }
+</style>

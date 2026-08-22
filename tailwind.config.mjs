@@ -6,7 +6,7 @@ export default {
   theme: {
     extend: {
       fontFamily: {
-        sans: ["Geist Sans", ...defaultTheme.fontFamily.sans],
+        sans: ["Roboto Slab", "Bitter", ...defaultTheme.fontFamily.sans],
         mono: ["Geist Mono", ...defaultTheme.fontFamily.mono],
       },
     },

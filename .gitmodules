@@ -1,3 +1,6 @@
 [submodule "permutation-posets"]
 	path = permutation-posets
 	url = https://github.com/iCaird/permutation-posets
+[submodule "public/permutation-posets"]
+	path = public/permutation-posets
+	url = https://github.com/iCaird/permutation-posets
