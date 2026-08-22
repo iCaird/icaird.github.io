@@ -1,0 +1,102 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Permutation Poset Browser</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <main>
+    <h1>Permutation Poset Browser</h1>
+
+    <section class="controls" aria-label="Filters">
+      <label class="stack">
+        <span>Size</span>
+        <select id="size">
+          <option>3</option><option>4</option><option>5</option><option>6</option>
+          <option selected>7</option><option>8</option><option>9</option>
+          <option>10</option><option>11</option><option>12</option>
+        </select>
+      </label>
+
+      <label class="stack">
+        <span>Node order</span>
+        <select id="ordering">
+          <option value="diagonal" selected>Diagonal sweep (SW first)</option>
+          <option value="position">Position order</option>
+        </select>
+      </label>
+
+      <label class="stack">
+        <span>321 collection</span>
+        <select id="pattern321">
+          <option value="avoid" selected>Avoid 321</option>
+          <option value="contain">Contain 321</option>
+          <option value="all">All</option>
+          <option value="avoidFour">Avoid 4321</option>
+          <option value="avoidFive">Avoid 54321</option>
+          <option value="avoidSix">Avoid 654321</option>
+          <option value="avoidSeven">Avoid 7654321</option>
+        </select>
+      </label>
+
+      <label class="stack">
+        <span>1324 / 2143 collection</span>
+        <select id="patternCollection">
+          <option value="all" selected>All</option>
+          <option value="neither">Avoid both</option>
+          <option value="1324-only">Contain 1324 only</option>
+          <option value="2143-only">Contain 2143 only</option>
+          <option value="both">Contain both</option>
+        </select>
+      </label>
+
+      <label><input id="treesOnly" type="checkbox"> Hasse trees only</label>
+
+      <label class="stack">
+        <span>Go to permutation</span>
+        <span class="jump-control">
+          <input id="jump" type="text" inputmode="numeric" placeholder="e.g. 2135467">
+          <button id="go" type="button">Go</button>
+        </span>
+      </label>
+    </section>
+
+    <section class="navigator" aria-label="Permutation navigation">
+      <button id="previous" type="button" aria-label="Previous permutation">← Previous</button>
+      <div class="current">
+        <div id="permutation">—</div>
+        <div id="position"></div>
+        <div id="properties"></div>
+      </div>
+      <button id="next" type="button" aria-label="Next permutation">Next →</button>
+    </section>
+
+    <div class="viewer-grid">
+      <section class="panel">
+        <h2>Permutation matrix and Hasse arrows</h2>
+        <svg id="diagram" viewBox="0 0 640 640" role="img"
+             aria-label="Permutation matrix with Hasse diagram"></svg>
+        <div class="legend">
+          <span><i class="swatch dot"></i>permutation dot</span>
+          <span><i class="swatch arrow"></i>cover relation</span>
+        </div>
+      </section>
+
+      <section class="panel">
+        <h2>Incidence-algebra pattern</h2>
+        <div id="incidence"></div>
+        <div class="legend">
+          <span><i class="swatch cover"></i>Hasse coordinate</span>
+          <span>∗ allowed entry</span>
+        </div>
+      </section>
+    </div>
+
+    <div id="message" role="status"></div>
+  </main>
+
+  <script src="app.js" defer></script>
+</body>
+</html>

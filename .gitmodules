@@ -1,0 +1,3 @@
+[submodule "permutation-posets"]
+	path = permutation-posets
+	url = https://github.com/iCaird/permutation-posets
