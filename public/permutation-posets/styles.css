@@ -1,3 +1,4 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@400;500;600;700&display=swap');
 :root {
   color-scheme: light dark;
   --bg: light-dark(#f5f2eb, #171815);
@@ -16,7 +17,7 @@ body {
   margin: 0;
   background: var(--bg);
   color: var(--ink);
-  font: 15px/1.4 system-ui, sans-serif;
+  font: 15px/1.4 Roboto Slab, sans-serif;
 }
 
 main {
@@ -59,7 +60,7 @@ button {
 }
 
 input[type="checkbox"] { accent-color: var(--blue); }
-input[type="text"] { width: 180px; font-family: ui-monospace, monospace; }
+input[type="text"] { width: 180px; font-family: "Roboto Slab", monospace; }
 button { cursor: pointer; }
 button:hover { border-color: var(--blue); }
 button:disabled { opacity: .45; cursor: default; }
@@ -77,7 +78,7 @@ button:disabled { opacity: .45; cursor: default; }
 .current { text-align: center; }
 
 #permutation {
-  font: 700 24px/1.2 ui-monospace, monospace;
+  font: 700 24px/1.2 "Roboto Slab", monospace;
   letter-spacing: 2px;
 }
 
@@ -108,7 +109,7 @@ button:disabled { opacity: .45; cursor: default; }
 table {
   border-collapse: collapse;
   margin: auto;
-  font-family: ui-monospace, monospace;
+  font-family: "Roboto Slab", monospace;
 }
 
 th,
